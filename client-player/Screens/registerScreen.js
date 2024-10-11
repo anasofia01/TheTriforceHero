@@ -19,10 +19,20 @@ export default function renderScreen4() {
        <div>
         <button type="submit" id="save-form" value="Send"></button>
       </div>
+      <button id="next-form">Next</button>
     </form>
   `;
+
+	socket.on('formScren', () => {
+		console.log('The phone screen shows the register form');
+	});
+
 	document.getElementById('save-form').addEventListener('submit', (event) => {
 		event.preventDefault();
-		router.navigateTo('/screen5');
+		socket.emit('registerInfoSaved', data);
+	});
+
+	document.getElementById('next').addEventListener('click', () => {
+		router.navigateTo('/loserScreen');
 	});
 }

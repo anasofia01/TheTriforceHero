@@ -8,7 +8,12 @@ export default function renderScreen5() {
     <p>Reclama tu cupon de Nintendo que se te envio al Correo</p>
     <button id="btn-finalize">Get your cuppon</button>
   `;
+
+	socket.on('resultScreen', () => {
+		console.log('The phone screen shows the results of the game');
+	});
+
 	document.getElementById('btn-finalize').addEventListener('click', () => {
-		router.navigateTo('/screen6');
+		router.navigateTo('/winnerScreen');
 	});
 }

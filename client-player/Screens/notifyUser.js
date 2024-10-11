@@ -7,7 +7,12 @@ export default function renderScreen2() {
     <p>Hey!!Look at the Screen</p>
     <button id="btn-continue">Tap to Continue</button>
   `;
+
+	socket.on('changeScreen', () => {
+		console.log('The phone screen has changed');
+	});
+
 	document.getElementById('btn-continue').addEventListener('click', () => {
-		router.navigateTo('/screen3');
+		router.navigateTo('/rupeeScreen');
 	});
 }

@@ -6,7 +6,12 @@ export default function renderScreen3() {
     <h1>The Legend of Zelda</h1>
     <button id="rupee-continue">Tap to Continue</button>
   `;
+
+	socket.on('changeScreen', () => {
+		console.log('The phone screen has changed');
+	});
+
 	document.getElementById('rupee-continue').addEventListener('click', () => {
-		router.navigateTo('/screen4');
+		router.navigateTo('/registerScreen');
 	});
 }

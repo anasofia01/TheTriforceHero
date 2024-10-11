@@ -1,9 +1,9 @@
-import renderScreen1 from './Screens/screen1.js';
-import renderScreen2 from './Screens/screen2.js';
-import renderScreen3 from './Screens/screen3.js';
-import renderScreen4 from './Screens/screen4.js';
-import renderScreen5 from './Screens/screen5.js';
-import renderScreen6 from './Screens/screen6.js';
+import renderConectionPhone from './Screens/conectionPhone.js';
+import renderNotifyUser from './Screens/notifyUser.js';
+import renderRupeeScreen from './Screens/rupeeScreen.js';
+import renderRegisterScreen from './Screens/registerScreen.js';
+import renderLoserScreen from './Screens/loserScreen.js';
+import renderWinnerScreen from './Screens/winnerScreen.js';
 import socket from './socket.js';
 
 const router = new Router({
@@ -22,34 +22,34 @@ function clearScripts() {
 	document.getElementById('app').innerHTML = '';
 }
 
-router.add('/', async () => {
+router.add('conectionPhone', async () => {
 	clearScripts();
-	renderScreen1();
+	renderConectionPhone();
 });
 
-router.add('/screen2', async () => {
+router.add('/notifyUser', async () => {
 	clearScripts();
-	renderScreen2();
+	renderNotifyUser();
 });
 
-router.add('/screen3', async () => {
+router.add('/rupeeScreen', async () => {
 	clearScripts();
-	renderScreen3();
+	renderRupeeScreen();
 });
 
-router.add('/screen4', async () => {
+router.add('/registerScreen', async () => {
 	clearScripts();
-	renderScreen4();
+	renderRegisterScreen();
 });
 
-router.add('/screen5', async () => {
+router.add('/loserScreen', async () => {
 	clearScripts();
-	renderScreen5();
+	renderLoserScreen();
 });
 
-router.add('/screen6', async () => {
+router.add('/winnerScreen', async () => {
 	clearScripts();
-	renderScreen6();
+	renderWinnerScreen();
 });
 
 router.check().addUriListener();

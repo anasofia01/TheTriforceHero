@@ -8,7 +8,12 @@ export default function renderScreen6() {
     <p>Reclama tu Amiibo y poster de Zelda</p>
     <button id="btn-winner">Get your prize</button>
   `;
+
+	socket.on('resultScreen', () => {
+		console.log('The phone screen shows the results of the game');
+	});
+
 	document.getElementById('btn-winner').addEventListener('click', () => {
-		router.navigateTo('/');
+		router.navigateTo('conectionPhone');
 	});
 }
