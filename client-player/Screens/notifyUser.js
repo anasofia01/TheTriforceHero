@@ -9,8 +9,8 @@ export default function renderScreen2() {
   `;
 
   document.getElementById('btn-continue').addEventListener('click', () => {
-    // Emitir un evento para la TV cuando el botón sea clicado
-    socket.emit('phoneContinue', { message: 'Phone tapped to continue' });
+    // Emitir el evento changeScreen al servidor
+    socket.emit('changeScreen', { message: 'Phone tapped to continue' });
 
     // Cambiar la pantalla del teléfono a 'rupeeScreen'
     router.navigateTo('/rupeeScreen');

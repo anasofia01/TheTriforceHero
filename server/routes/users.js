@@ -7,6 +7,6 @@ router.get('/users', usersController.getUsers);
 router.post('/users', usersController.createUsers);
 // router.post('/another-endpoint-example', endpointController.controllerFunction);
 
-
-
 module.exports = router;
+
+
