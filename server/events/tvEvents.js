@@ -13,9 +13,13 @@
 
 const db = require('../db');
 const { changeScreen } = require('../events-handlers/tvEventsHandlers');
+const { rupeeChangeScreen } = require('../events-handlers/tvEventsHandlers');
 
 const tvEvents = (socket, io) => {
 	socket.on('changeScreen', changeScreen(socket, db, io));
+	socket.on('rupeeChangeScreen' , rupeeChangeScreen(socket, db, io));
 };
+
+
 
 module.exports = { tvEvents };

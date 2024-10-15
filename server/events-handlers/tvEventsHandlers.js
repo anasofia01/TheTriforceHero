@@ -16,8 +16,20 @@ const changeScreen = (socket, db, io) => {
 	};
 };
 
+const rupeeChangeScreen = (socket, db, io) => {
+	return (data) => {
+		console.log('Received rupeeChangeScreen event:', data.message);
+		// Here you can add logic to change the TV screen based on the received data
+		io.emit('rupeeScreenChanged', { screen: 'allSetScreen' });
+	};
+};
+
+
+
+
 module.exports = {
 	connectUser,
 	startGame,
 	changeScreen,
+	rupeeChangeScreen
 };

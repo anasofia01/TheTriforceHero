@@ -7,11 +7,9 @@ export default function renderScreen3() {
     <button id="rupee-continue">Tap to Continue</button>
   `;
 
-	socket.on('changeScreen', () => {
-		console.log('The phone screen has changed');
-	});
+  document.getElementById('rupee-continue').addEventListener('click', () => {
+    // Emitir el evento changeScreen al servidor
+    socket.emit('rupeeChangeScreen', { message: 'rupee tapped to continue' });
 
-	document.getElementById('rupee-continue').addEventListener('click', () => {
-		router.navigateTo('/registerScreen');
 	});
 }

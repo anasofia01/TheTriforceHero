@@ -27,7 +27,6 @@ export default function renderScreen2() {
     app.innerHTML = `
         <h1>Welcome Hero of Hyrule!</h1>
         <h2>Raise the Master Sword to Continue</h2>
-        <button id="up-sword">Next</button>
     `;
 
     socket.on('tvScreenChanged', (data) => {
@@ -36,7 +35,4 @@ export default function renderScreen2() {
         }
     });
 
-    document.getElementById('up-sword').addEventListener('click', () => {
-        router.navigateTo('/instructionsScreen');
-    });
 }

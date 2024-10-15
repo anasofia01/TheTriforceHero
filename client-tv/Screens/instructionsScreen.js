@@ -10,7 +10,11 @@ export default function renderScreen3() {
     </ul>
     <button id="instructions">Next</button>
   `;
-	document.getElementById('instructions').addEventListener('click', () => {
-		router.navigateTo('/allSetScreen');
-	});
+
+  socket.on('rupeeScreenChanged', (data) => {
+    if (data.screen === 'allSetScreen') {
+        router.navigateTo('/allSetScreen');
+    }
+});
+
 }
