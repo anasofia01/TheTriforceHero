@@ -8,6 +8,6 @@ export default function renderScreen5() {
     <button id="instructions-game">Next</button>
   `;
 	document.getElementById('instructions-game').addEventListener('click', () => {
-		router.navigateTo('/screen6');
+		router.navigateTo('/swordTryScreen');
 	});
 }

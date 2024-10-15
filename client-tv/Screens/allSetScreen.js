@@ -7,6 +7,6 @@ export default function renderScreen4() {
     <button id="next">Next</button>
   `;
 	document.getElementById('next').addEventListener('click', () => {
-		router.navigateTo('/screen5');
+		router.navigateTo('/howToScreen');
 	});
 }

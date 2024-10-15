@@ -22,7 +22,7 @@ function clearScripts() {
 	document.getElementById('app').innerHTML = '';
 }
 
-router.add('conectionPhone', async () => {
+router.add('/conectionPhone', async () => {
 	clearScripts();
 	renderConectionPhone();
 });

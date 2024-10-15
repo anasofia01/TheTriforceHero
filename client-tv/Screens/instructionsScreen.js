@@ -11,6 +11,6 @@ export default function renderScreen3() {
     <button id="instructions">Next</button>
   `;
 	document.getElementById('instructions').addEventListener('click', () => {
-		router.navigateTo('/screen4');
+		router.navigateTo('/allSetScreen');
 	});
 }

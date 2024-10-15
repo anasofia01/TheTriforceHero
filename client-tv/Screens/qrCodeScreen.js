@@ -15,6 +15,6 @@ export default function renderScreen1() {
 	});
 
 	document.getElementById('init-experience').addEventListener('click', () => {
-		router.navigateTo('/screen2');
+		router.navigateTo('/swordScreen');
 	});
 }

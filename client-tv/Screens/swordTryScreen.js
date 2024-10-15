@@ -13,6 +13,6 @@ export default function renderScreen6() {
     <button id="movements">Next</button>
   `;
 	document.getElementById('movements').addEventListener('click', () => {
-		router.navigateTo('/screen7');
+		router.navigateTo('/loadingScreen');
 	});
 }

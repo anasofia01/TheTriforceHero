@@ -7,6 +7,6 @@ export default function renderScreen11() {
     <button id="start-nivel">Next</button>
   `;
 	document.getElementById('start-nivel').addEventListener('click', () => {
-		router.navigateTo('/screen12');
+		router.navigateTo('/gameScreen');
 	});
 }

@@ -7,6 +7,6 @@ export default function renderScreen7() {
     <button id="btn-waiting">Next</button>
   `;
 	document.getElementById('btn-waiting').addEventListener('click', () => {
-		router.navigateTo('/screen8');
+		router.navigateTo('/tutorialScreen');
 	});
 }

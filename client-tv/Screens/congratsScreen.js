@@ -9,6 +9,6 @@ export default function renderScreen13() {
     <button id="finish">Finish</button>
   `;
 	document.getElementById('finish').addEventListener('click', () => {
-		router.navigateTo('/');
+		router.navigateTo('/qrCodeScreen/qrCodeScreen');
 	});
 }

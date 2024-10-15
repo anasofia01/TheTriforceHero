@@ -1,4 +1,4 @@
-import renderScreen1 from './Screens/qrCodeScreen.js';
+import renderScreen1 from './Screens/QrCodeScreen.js';
 import renderScreen2 from './Screens/swordScreen.js';
 import renderScreen3 from './Screens/instructionsScreen.js';
 import renderScreen4 from './Screens/allSetScreen.js';
@@ -34,62 +34,62 @@ router.add('/', async () => {
 	renderScreen1();
 });
 
-router.add('/screen2', async () => {
+router.add('/swordScreen', async () => {
 	clearScripts();
 	renderScreen2();
 });
 
-router.add('/screen3', async () => {
+router.add('/instructionsScreen', async () => {
 	clearScripts();
 	renderScreen3();
 });
 
-router.add('/screen4', async () => {
+router.add('/allSetScreen', async () => {
 	clearScripts();
 	renderScreen4();
 });
 
-router.add('/screen5', async () => {
+router.add('/howToScreen', async () => {
 	clearScripts();
 	renderScreen5();
 });
 
-router.add('/screen6', async () => {
+router.add('/swordTryScreen', async () => {
 	clearScripts();
 	renderScreen6();
 });
 
-router.add('/screen7', async () => {
+router.add('/loadingScreen', async () => {
 	clearScripts();
 	renderScreen7();
 });
 
-router.add('/screen8', async () => {
+router.add('/tutorialScreen', async () => {
 	clearScripts();
 	renderScreen8();
 });
 
-router.add('/screen9', async () => {
+router.add('/readyScreen', async () => {
 	clearScripts();
 	renderScreen9();
 });
 
-router.add('/screen10', async () => {
+router.add('/counterScreen', async () => {
 	clearScripts();
 	renderScreen10();
 });
 
-router.add('/screen11', async () => {
+router.add('/beginScreen', async () => {
 	clearScripts();
 	renderScreen11();
 });
 
-router.add('/screen12', async () => {
+router.add('/gameScreen', async () => {
 	clearScripts();
 	renderScreen12();
 });
 
-router.add('/screen13', async () => {
+router.add('/congratsScreen', async () => {
 	clearScripts();
 	renderScreen13();
 });

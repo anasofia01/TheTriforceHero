@@ -8,6 +8,6 @@ export default function renderScreen9() {
     <button id="start-game">Nivel One</button>
   `;
 	document.getElementById('start-game').addEventListener('click', () => {
-		router.navigateTo('/screen10');
+		router.navigateTo('/counterScreen');
 	});
 }

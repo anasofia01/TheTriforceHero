@@ -1,4 +1,4 @@
-const socket = io('http://localhost:5050', { path: '/real-time' }); // Update this to your server URL
+const socket = io('http://localhost:5500/client-tv/', { path: '/real-time' });
 
 socket.on('connect', () => {
 	console.log('Connected to Socket.IO server');

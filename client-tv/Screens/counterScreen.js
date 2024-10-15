@@ -7,6 +7,6 @@ export default function renderScreen10() {
     <button id="start-timer">START!</button>
   `;
 	document.getElementById('start-timer').addEventListener('click', () => {
-		router.navigateTo('/screen11');
+		router.navigateTo('/beginScreen');
 	});
 }
