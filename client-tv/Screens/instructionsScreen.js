@@ -8,7 +8,6 @@ export default function renderScreen3() {
       <li>2. Hold the Sword vertically</li>
       <li>3. Tap the Rupee on the screen to continue</li>
     </ul>
-    <button id="instructions">Next</button>
   `;
 
   socket.on('rupeeScreenChanged', (data) => {
