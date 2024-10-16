@@ -5,6 +5,29 @@ socket.on('connect', () => {
 });
 // #############################
 
+
+
+
+socket.on('connectScreenChanged', (data) => {
+	console.log('Received connectScreenChanged event:', data);
+	// Here you can add logic to change the TV screen based on the received data
+	if (data.screen === 'swordScreen') {
+		// Call a function to render the instructions screen
+		renderSwordScreen();;
+	}
+});
+
+// You'll need to define this function elsewhere in your TV client code
+function renderSwordScreen() {
+	// Logic to render the instructions screen on the TV
+	console.log('Rendering Sword screen on TV');
+}
+
+
+
+
+
+
 // Add this new event listener
 socket.on('tvScreenChanged', (data) => {
 	console.log('Received tvScreenChanged event:', data);
@@ -38,5 +61,7 @@ function renderAllsetScreen() {
 	// Logic to render the instructions screen on the TV
 	console.log('Rendering All set screen on TV');
 }
+
+
 
 export default socket;

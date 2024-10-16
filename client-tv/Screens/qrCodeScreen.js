@@ -6,15 +6,11 @@ export default function renderScreen1() {
     <h1>The Triforce Hero</h1>
     <h4>Hey Listen</h4>
     <h4>Scan Me</h4>
-    <button id="emit-userConnected">Connect User</button>
-    <button id="init-experience">Next</button>
   `;
-
-	document.getElementById('emit-userConnected').addEventListener('click', () => {
-		socket.emit('connectUser', { message: 'The user has connected to the game' });
-	});
-
-	document.getElementById('init-experience').addEventListener('click', () => {
-		router.navigateTo('/swordScreen');
+	
+	socket.on('connectScreenChanged', (data) => {
+		if (data.screen === 'swordScreen') {
+			router.navigateTo('/swordScreen'); // Navegar a swordScreen cuando se reciba el evento
+		}
 	});
 }

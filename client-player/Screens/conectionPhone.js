@@ -4,7 +4,7 @@ export default function renderScreen1() {
 	const app = document.getElementById('app');
 	app.innerHTML = `
     <h1>The Legend of Zelda</h1>
-    <p>Awesome! You're now connected to the game! Keep an eye on the screen to continue.</p>
+    <p>Awesome! You're now connected to the game! Keep an eye on the screen and tap to continue.</p>
     <button id="btn-next">Next</button>
   `;
 
@@ -13,6 +13,10 @@ export default function renderScreen1() {
 	});
 
 	document.getElementById('btn-next').addEventListener('click', () => {
-		router.navigateTo('/notifyUser');
-	});
+    // Emitir el evento changeScreen al servidor
+    socket.emit('connectchangeScreen', { message: 'Phone tapped to continue' });
+
+    // Cambiar la pantalla del teléfono a 'rupeeScreen'
+    router.navigateTo('/notifyUser');
+  });
 }

@@ -9,6 +9,6 @@ export default function renderScreen4() {
   // Navegar automáticamente después de 25 segundos
   setTimeout(() => {
     router.navigateTo('/howToScreen');
-  }, 10000); // 10 segundos
+  }, 6000); // 6 segundos
 
 }
