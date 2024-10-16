@@ -10,9 +10,11 @@ export default function renderScreen6() {
       <li>Forward</li>
       <li>Right</li>
     </ul>
-    <button id="movements">Next</button>
+ 
   `;
-	document.getElementById('movements').addEventListener('click', () => {
-		router.navigateTo('/loadingScreen');
-	});
+  socket.on('thirdRupeeScreenChanged', (data) => {
+    if (data.screen === 'loadingScreen') {
+        router.navigateTo('/loadingScreen');
+    }
+});
 }

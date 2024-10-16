@@ -4,9 +4,12 @@ export default function renderScreen7() {
 	const app = document.getElementById('app');
 	app.innerHTML = `
     <h1>Loading...</h1>
-    <button id="btn-waiting">Next</button>
+
   `;
-	document.getElementById('btn-waiting').addEventListener('click', () => {
-		router.navigateTo('/tutorialScreen');
-	});
+
+	  // Navegar automáticamente después de 25 segundos
+		setTimeout(() => {
+			router.navigateTo('/tutorialScreen');
+		}, 5000); // 6 segundos
+
 }

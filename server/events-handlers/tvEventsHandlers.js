@@ -41,10 +41,39 @@ const secondRupeeChangeScreen  = (socket, db, io) => {
 };
 
 
+const thirdRupeeChangeScreen  = (socket, db, io) => {
+	return (data) => {
+		console.log('Received thirdRupeeChangeScreen event:', data.message);
+		io.emit('thirdRupeeScreenChanged', { screen: 'loadingScreen' });
+	};
+};
+
+
+const nextRupeeChangeScreen  = (socket, db, io) => {
+	return (data) => {
+		console.log('Received nextRupeeChangeScreen event:', data.message);
+		io.emit('nextRupeeScreenChanged', { screen: 'readyScreen' });
+	};
+};
+
+
+const seeAgain = (socket, db, io) => {
+	return (data) => {
+			console.log('Received seeAgain event:', data.message);
+			// Emitir el evento tvScreenChanged a la TV para refrescar la pantalla actual (tutorialScreen)
+			io.emit('seeAgainT', { screen: 'tutorialScreen' });
+	};
+};
+
+
 module.exports = {
 	connectUser,
 	startGame,
 	changeScreen,
 	rupeeChangeScreen,
 	connectchangeScreen,
+	secondRupeeChangeScreen,
+	thirdRupeeChangeScreen,
+	nextRupeeChangeScreen,
+	seeAgain
 };

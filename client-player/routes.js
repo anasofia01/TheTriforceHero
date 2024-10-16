@@ -1,6 +1,9 @@
 import renderConectionPhone from './Screens/conectionPhone.js';
 import renderNotifyUser from './Screens/notifyUser.js';
 import renderRupeeScreen from './Screens/rupeeScreen.js';
+import renderSecondRupeeScreen from './Screens/secondrupeeScreen.js';
+import renderThirdRupeeScreen from './Screens/thirdRupeeScreen.js';
+import renderTutorialPhone from './Screens/tutorialPhone.js';
 import renderRegisterScreen from './Screens/registerScreen.js';
 import renderLoserScreen from './Screens/loserScreen.js';
 import renderWinnerScreen from './Screens/winnerScreen.js';
@@ -35,6 +38,21 @@ router.add('/notifyUser', async () => {
 router.add('/rupeeScreen', async () => {
 	clearScripts();
 	renderRupeeScreen();
+});
+
+router.add('/secondRupeeScreen', async () => {
+	clearScripts();
+	renderSecondRupeeScreen();
+});
+
+router.add('/thirdRupeeScreen', async () => {
+	clearScripts();
+	renderThirdRupeeScreen();
+});
+
+router.add('/tutorialPhone', async () => {
+	clearScripts();
+	renderTutorialPhone();
 });
 
 router.add('/registerScreen', async () => {

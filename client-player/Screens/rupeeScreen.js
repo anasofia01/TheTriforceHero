@@ -11,5 +11,7 @@ export default function renderScreen3() {
     // Emitir el evento changeScreen al servidor
     socket.emit('rupeeChangeScreen', { message: 'rupee tapped to continue' });
 
+    router.navigateTo('/secondRupeeScreen');
+
 	});
 }

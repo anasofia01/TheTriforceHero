@@ -9,4 +9,20 @@ export default function renderScreen8() {
 	document.getElementById('btn-next').addEventListener('click', () => {
 		router.navigateTo('/readyScreen');
 	});
+
+  socket.on('nextRupeeScreenChanged', (data) => {
+    if (data.screen === 'readyScreen') {
+        router.navigateTo('/readyScreen');
+    }
+});
+
+socket.on('seeAgainT', (data) => {
+	if (data.screen === 'tutorialScreen') {
+		router.navigateTo('/tutorialScreen');
+
+	}
+});
+
+
+
 }

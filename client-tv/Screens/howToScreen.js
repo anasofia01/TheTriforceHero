@@ -5,9 +5,11 @@ export default function renderScreen5() {
 	app.innerHTML = `
     <h1>How to Play?</h1>
     <p>You are the chosen hero, tasked with protecting the Triforce. Defend Hyrule by fighting off the monsters send by Ganon that threaten the peace!</p>
-    <button id="instructions-game">Next</button>
+
   `;
-	document.getElementById('instructions-game').addEventListener('click', () => {
-		router.navigateTo('/swordTryScreen');
-	});
+  socket.on('secondRupeeScreenChanged', (data) => {
+    if (data.screen === 'swordTryScreen') {
+        router.navigateTo('/swordTryScreen');
+    }
+});
 }

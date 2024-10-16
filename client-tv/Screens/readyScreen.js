@@ -10,4 +10,12 @@ export default function renderScreen9() {
 	document.getElementById('start-game').addEventListener('click', () => {
 		router.navigateTo('/counterScreen');
 	});
+
+	socket.on('seeAgainT', (data) => {
+		if (data.screen === 'tutorialScreen') {
+			router.navigateTo('/tutorialScreen');
+
+		}
+	});
+
 }
