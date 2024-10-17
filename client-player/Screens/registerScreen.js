@@ -29,6 +29,9 @@ export default function renderScreen4() {
 	document.getElementById('save-form').addEventListener('submit', (event) => {
 		event.preventDefault();
 		socket.emit('registerInfoSaved', data);
+
+    router.navigateTo('/thanksScreen');
+
 	});
 
 }

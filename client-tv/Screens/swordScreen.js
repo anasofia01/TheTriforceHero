@@ -26,6 +26,7 @@ export default function renderScreen2() {
     const app = document.getElementById('app');
     app.innerHTML = `
         <h1>Welcome Hero of Hyrule!</h1>
+        <img id='sword' src="https://pbs.twimg.com/media/GaINbJFXUAAchZU?format=jpg&name=large" alt="Master Sword" />
         <h2>Raise the Master Sword to Continue</h2>
     `;
 
