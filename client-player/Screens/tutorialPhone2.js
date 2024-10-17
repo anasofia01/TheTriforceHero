@@ -5,14 +5,14 @@ export default function renderScreen3() {
 	app.innerHTML = `
     <h1>The Legend of Zelda</h1>
     <button id="seeAgain-btn">Tap to see again</button>
-    <button id="nextRupee-continue">Tap to Continue</button>
+    <button id="letsPlay-btn">Let's Play!</button>
   `;
 
-  document.getElementById('nextRupee-continue').addEventListener('click', () => {
+  document.getElementById('letsPlay-btn').addEventListener('click', () => {
     // Emitir el evento changeScreen al servidor
-    socket.emit('nextRupeeChangeScreen', { message: 'rupee tapped to continue' });
-
-    router.navigateTo('/tutorialPhone2');
+    socket.emit('letsPlay', { message: 'game starting!' });
+    
+    router.navigateTo('/moveSwordScreen');
 
 	});
 

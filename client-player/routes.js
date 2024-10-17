@@ -4,6 +4,8 @@ import renderRupeeScreen from './Screens/rupeeScreen.js';
 import renderSecondRupeeScreen from './Screens/secondrupeeScreen.js';
 import renderThirdRupeeScreen from './Screens/thirdRupeeScreen.js';
 import renderTutorialPhone from './Screens/tutorialPhone.js';
+import renderTutorialPhone2 from './Screens/tutorialPhone2.js';
+import renderMoveSwordScreen from './Screens/moveSwordScreen.js';
 import renderRegisterScreen from './Screens/registerScreen.js';
 import renderLoserScreen from './Screens/loserScreen.js';
 import renderWinnerScreen from './Screens/winnerScreen.js';
@@ -53,6 +55,16 @@ router.add('/thirdRupeeScreen', async () => {
 router.add('/tutorialPhone', async () => {
 	clearScripts();
 	renderTutorialPhone();
+});
+
+router.add('/tutorialPhone2', async () => {
+	clearScripts();
+	renderTutorialPhone2();
+});
+
+router.add('/moveSwordScreen', async () => {
+	clearScripts();
+	renderMoveSwordScreen();
 });
 
 router.add('/registerScreen', async () => {

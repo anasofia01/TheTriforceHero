@@ -19,6 +19,7 @@ const { secondRupeeChangeScreen } = require('../events-handlers/tvEventsHandlers
 const { thirdRupeeChangeScreen } = require('../events-handlers/tvEventsHandlers');
 const { nextRupeeChangeScreen } = require('../events-handlers/tvEventsHandlers');
 const { seeAgain } = require('../events-handlers/tvEventsHandlers');
+const { letsPlay } = require('../events-handlers/tvEventsHandlers');
 
 const tvEvents = (socket, io) => {
 	socket.on('changeScreen', changeScreen(socket, db, io));
@@ -28,6 +29,7 @@ const tvEvents = (socket, io) => {
 	socket.on('thirdRupeeChangeScreen', thirdRupeeChangeScreen(socket, db, io));
 	socket.on('nextRupeeChangeScreen', nextRupeeChangeScreen(socket, db, io));
 	socket.on('seeAgain', seeAgain(socket, db, io));
+	socket.on('letsPlay', letsPlay(socket, db, io));
 };
 
 

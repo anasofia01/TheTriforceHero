@@ -66,6 +66,15 @@ const seeAgain = (socket, db, io) => {
 };
 
 
+const letsPlay = (socket, db, io) => {
+	return (data) => {
+			console.log('Received letsPlay event:', data.message);
+			// Emitir el evento tvScreenChanged a la TV para refrescar la pantalla actual (tutorialScreen)
+			io.emit('letsPlay', { screen: 'counterScreen' });
+	};
+};
+
+
 module.exports = {
 	connectUser,
 	startGame,
@@ -75,5 +84,6 @@ module.exports = {
 	secondRupeeChangeScreen,
 	thirdRupeeChangeScreen,
 	nextRupeeChangeScreen,
-	seeAgain
+	seeAgain,
+	letsPlay
 };

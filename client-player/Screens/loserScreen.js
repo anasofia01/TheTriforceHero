@@ -4,16 +4,12 @@ export default function renderScreen5() {
 	const app = document.getElementById('app');
 	app.innerHTML = `
     <h1>The Legend of Zelda</h1>
-    <h5>Thank You for Try</h5>
-    <p>Reclama tu cupon de Nintendo que se te envio al Correo</p>
-    <button id="btn-finalize">Get your cuppon</button>
+    <h5>Thank You for Trying</h5>
+    <p>Claim your Nintendo Coupon</p>
+    <button id="btn-finalize">Get your coupon</button>
   `;
 
-	socket.on('resultScreen', () => {
-		console.log('The phone screen shows the results of the game');
-	});
-
 	document.getElementById('btn-finalize').addEventListener('click', () => {
-		router.navigateTo('/winnerScreen');
+		router.navigateTo('/registerScreen');
 	});
 }

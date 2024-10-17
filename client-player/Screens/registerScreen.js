@@ -32,7 +32,4 @@ export default function renderScreen4() {
 		socket.emit('registerInfoSaved', data);
 	});
 
-	document.getElementById('next').addEventListener('click', () => {
-		router.navigateTo('/loserScreen');
-	});
 }

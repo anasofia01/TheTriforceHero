@@ -125,4 +125,23 @@ function renderTutorialScreen() {
 	console.log('Rendering tutorial screen on TV');
 }
 
+
+socket.on('letsPlay', (data) => {
+	console.log('Received letsPlay event:', data);
+	// Here you can add logic to change the TV screen based on the received data
+	if (data.screen === 'counterScreen') {
+		// Call a function to render the instructions screen
+		renderCounterScreen();
+	}
+});
+
+// You'll need to define this function elsewhere in your TV client code
+function renderCounterScreen() {
+	// Logic to render the instructions screen on the TV
+	console.log('Rendering Counter screen on TV');
+}
+
+
+
+
 export default socket;

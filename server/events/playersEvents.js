@@ -1,13 +1,12 @@
 const db = require('../db');
 const { changeScreen } = require('../events-handlers/playersEventsHandlers');
+const { winner } = require('../events-handlers/playersEventsHandlers');
+const { loser } = require('../events-handlers/playersEventsHandlers');
 
 const playersEvents = (socket, io) => {
-	/* 	/* 	socket.on('changeScreen', changeScreen(socket, db, io));
-	socket.on('validedPlays', validedPlays(socket, db, io));
-	socket.emit('formScreen');
-	// socket.on('registerInfoSaved', registerInfoSaved(socket, db, io));
-	socket.emit('resultScreen', data);
-	socket.emit("connectPhone");"*/
+
+	socket.on('winner', winner(socket, db, io));
+	socket.on('loser', loser(socket, db, io));
 };
 
 module.exports = { playersEvents };
