@@ -17,9 +17,8 @@ export default function renderScreen4() {
         <input type="number" id="cellPhone" name="cellPhone" placeholder="CellPhone"/>
       </div>
        <div>
-        <button type="submit" id="save-form" value="Send"></button>
+        <button type="submit" id="save-form" value="Send">Send</button>
       </div>
-      <button id="next-form">Next</button>
     </form>
   `;
 
