@@ -26,6 +26,11 @@ app.get('/app2/*', (req, res) => {
 	res.sendFile(path.join(clientTvPath, 'index.html'));
 });
 
+app.get('/', (req, res) => {
+  res.send('¡Servidor Express funcionando correctamente!');
+});
+
+
 const usersRouter = require('./routes/users');
 
 app.use('/', usersRouter);
