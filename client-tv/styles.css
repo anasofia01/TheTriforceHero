@@ -29,3 +29,18 @@
   width: 800px;
   height: 500px;
 }
+
+#qrCodeSection{
+  display: flex;
+  flex-direction: row;
+}
+
+#howToSection{
+  display: flex;
+  flex-direction: row;
+}
+
+#intructions{
+  display: flex;
+  flex-direction: row;
+}
