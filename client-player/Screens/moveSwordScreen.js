@@ -16,6 +16,9 @@ export default function renderScreen3() {
 
   `;
 
+
+
+
 	socket.on('winner', (data) => {
 		if (data.screen === 'winnerScreen') {
 			router.navigateTo('/winnerScreen');
@@ -70,6 +73,7 @@ export default function renderScreen3() {
 		console.log('ACCELERATION: ', acceleration);
 		console.log('ROTATION: ', rotationRate);
 		// EMIT EVENT TO SERVER WITH VALUES
+		//Emitir estas 3 vainas amarillas de abajo al lservidor y luego a la pantalla del tv y renderizar en el tv
 
 		drawAxes();
 		drawAcceleration(acceleration);
@@ -89,24 +93,6 @@ export default function renderScreen3() {
 	drawAxes(); // Initial draw
 
 	// ------------- GEOLOCALIZATION
-
-	document.getElementById('location-button').addEventListener('click', sendCurentGeolocation);
-
-	async function sendCurentGeolocation() {
-		if (navigator.geolocation) {
-			navigator.geolocation.watchPosition(function (position) {
-				console.log('GEOLOCALIZATION', position);
-				// socket.emit("user-location", position); // Sends a string message to the server
-				const dataDiv = document.getElementById('data');
-				dataDiv.innerHTML = `
-          <p>LOCATION</p>
-          <p>LAT: ${position?.coords?.latitude}, LONG: ${position?.coords?.longitude}
-        `;
-			});
-		} else {
-			console.log('Geolocation is not supported by this browser.');
-		}
-	}
 
 	// ------------- GYROSCOPE SENSOR
 
