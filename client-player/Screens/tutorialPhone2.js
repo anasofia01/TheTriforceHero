@@ -11,7 +11,7 @@ export default function renderScreen3() {
   document.getElementById('letsPlay-btn').addEventListener('click', () => {
     // Emitir el evento changeScreen al servidor
     socket.emit('letsPlay', { message: 'game starting!' });
-    
+
     router.navigateTo('/moveSwordScreen');
 
 	});
@@ -19,6 +19,7 @@ export default function renderScreen3() {
   document.getElementById('seeAgain-btn').addEventListener('click', () => {
     // Emitir el evento changeScreen al servidor
     socket.emit('seeAgain', { message: 'see Again Tutorial' });
+    router.navigateTo('/tutorialPhone');
 
 	});
 

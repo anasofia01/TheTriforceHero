@@ -5,6 +5,7 @@ export default function renderScreen3() {
 	app.innerHTML = `
     <h1>The Legend of Zelda</h1>
     <p>Move your sword from side to side to defeat the enemies.</p>
+		<img id='moveSword' src="https://pbs.twimg.com/media/GaJSC7PWYAAMAiU?format=jpg&name=4096x4096" alt="Master Sword" />
     <p>Look at the TV screen!</p>
 
   `;

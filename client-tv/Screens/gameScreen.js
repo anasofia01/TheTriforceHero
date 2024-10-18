@@ -3,8 +3,9 @@ import { router, socket } from '../routes.js';
 export default function renderScreen12() {
 	const app = document.getElementById('app');
 	app.innerHTML = `
-    <h1>Nivel One</h1>
-	
+    <h1>Level One</h1>
+    <img id='game' src="https://pbs.twimg.com/media/GaJI4IyWYAADlcc?format=jpg&name=4096x4096" alt="game"/>
+
 
     <button id="winner-btn">Winer</button>
 		<button id="loser-btn">Loser</button>

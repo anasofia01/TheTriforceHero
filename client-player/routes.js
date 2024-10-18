@@ -9,6 +9,7 @@ import renderMoveSwordScreen from './Screens/moveSwordScreen.js';
 import renderRegisterScreen from './Screens/registerScreen.js';
 import renderLoserScreen from './Screens/loserScreen.js';
 import renderWinnerScreen from './Screens/winnerScreen.js';
+import renderThanksScreen from './Screens/thanksScreen.js';
 import socket from './socket.js';
 
 const router = new Router({
@@ -80,6 +81,11 @@ router.add('/loserScreen', async () => {
 router.add('/winnerScreen', async () => {
 	clearScripts();
 	renderWinnerScreen();
+});
+
+router.add('/thanksScreen', async () => {
+	clearScripts();
+	renderThanksScreen();
 });
 
 router.check().addUriListener();

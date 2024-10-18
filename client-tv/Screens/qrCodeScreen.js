@@ -6,7 +6,7 @@ export default function renderScreen1() {
 	<img id='nintendoLogo' src="https://logos-world.net/wp-content/uploads/2020/11/Nintendo-Logo-2006-2016.png"/>
 	<section>
     <h1>The Triforce Hero</h1>
-		<img id='frontLink' src='https://pbs.twimg.com/media/GaH35BiWgAAMhNi?format=jpg&name=4096x4096'/>
+		<img id='battleLinkPig' src='https://pbs.twimg.com/media/GaH35BiWgAAMhNi?format=jpg&name=4096x4096'/>
 	</section>
 	<section>
     <h4>Hey Listen!</h4>

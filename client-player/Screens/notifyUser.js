@@ -5,6 +5,7 @@ export default function renderScreen2() {
   app.innerHTML = `
     <h1>The Legend of Zelda</h1>
     <p>Hey!!Look at the Screen</p>
+    <img id='gifNotify' src="https://media.tenor.com/wOar0JtSmEcAAAAi/link-zelda.gif" alt="Link gif" />
     <button id="btn-continue">Tap to Continue</button>
   `;
 

@@ -3,7 +3,7 @@
   height: 50px;
 }
 
-#frontLink {
+#battleLinkPig {
   width: 500px;
   height: 250px;
 }
@@ -11,4 +11,21 @@
 #sword{
   width: 500px;
   height: 250px;
+}
+
+
+#battlefield{
+  width: 600px;
+  height: 600px;
+}
+
+
+#linkControl{
+  width: 300px;
+  height: 500px;
+}
+
+#game{
+  width: 800px;
+  height: 500px;
 }
