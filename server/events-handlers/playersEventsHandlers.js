@@ -1,4 +1,5 @@
 const { exampleFunction } = require('../utils/helpers');
+const { createUsers } = require('../controllers/users');
 
 const changeScreen = (socket, db, io) => {
 	return () => {};
@@ -9,7 +10,9 @@ const validedPlays = (socket, db, io) => {
 };
 
 const registerInfoSaved = (socket, io, data) => {
-	return () => {};
+	return () => {
+		createUsers(data);
+	};
 };
 
 const changeScreenPhone = (socket, db, io) => {

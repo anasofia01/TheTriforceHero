@@ -13,8 +13,9 @@ const playersEvents = (socket, io) => {
 		console.log('User location:', location);
 	});
 	socket.on('registerInfoSaved', (data) => {
+		console.log(data);
 		registerInfoSaved(socket, io, data);
 	});
 };
 
-module.exports = playersEvents;
+module.exports = { playersEvents };

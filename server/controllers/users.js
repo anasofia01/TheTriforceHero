@@ -13,9 +13,10 @@ const getUsers = async (req, res) => {
 
 const createUsers = async (req, res) => {
 	try {
-		const { user } = req.body;
-		db.users.push(user);
-		res.status(200).json(db.users);
+		console.log(req.body, 'se crea el usuario');
+		const { name, email, cellphone } = req.body;
+		const userResponse = await users.createUser(name, email, cellphone);
+		res.status(200).json(userResponse);
 	} catch (err) {
 		res.status(500).json({ error: err.message });
 	}

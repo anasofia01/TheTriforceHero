@@ -1,8 +1,9 @@
+import { response } from '../../server/app.js';
 import { router, socket } from '../routes.js';
 
 export default function renderScreen4() {
-  const app = document.getElementById('app');
-  app.innerHTML = `
+	const app = document.getElementById('app');
+	app.innerHTML = `
     <h1>The Legend of Zelda</h1>
     <h4>Register:</h4>
     <p>Enter your details below to claim the prize!</p>
@@ -22,25 +23,44 @@ export default function renderScreen4() {
     </form>
   `;
 
-  socket.on('formScreen', () => {
-    console.log('The phone screen shows the register form');
-  });
+	socket.on('formScreen', () => {
+		console.log('The phone screen shows the register form');
+	});
 
-  // Agregar el evento submit al formulario, no al botón
-  document.getElementById('form-register').addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevenir que se recargue la página
+	// Agregar el evento submit al formulario, no al botón
+	document.getElementById('form-register').addEventListener('submit', async (event) => {
+		event.preventDefault(); // Prevenir que se recargue la página
 
-    // Recoger los datos del formulario
-    const data = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      cellPhone: document.getElementById('cellPhone').value,
-    };
+		// Recoger los datos del formulario
+		const data = {
+			name: document.getElementById('name').value,
+			email: document.getElementById('email').value,
+			cellPhone: document.getElementById('cellPhone').value,
+		};
 
-    // Emitir los datos al servidor
-    socket.emit('registerInfoSaved', data);
+		// Emitir los datos al servidor
+		// socket.emit('registerInfoSaved', data);
 
-    // Navegar a la pantalla de agradecimiento
-    router.navigateTo('/thanksScreen');
-  });
+		// try {
+		// 	const response = await fetch('http://localhost:5050/users', {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			'Content-Type': 'application/json',
+		// 		},
+		// 		body: JSON.stringify(data),
+		// 	});
+		// } catch (error) {
+		// 	console.error(error);
+		// }
+
+		// const dataSupabase = await response.json();
+		// if (!response.ok) {
+		// 	console.error(error);
+		// }
+
+		// console.log(dataSupabase);
+
+		// Navegar a la pantalla de agradecimiento
+		// router.navigateTo('/thanksScreen');
+	});
 }

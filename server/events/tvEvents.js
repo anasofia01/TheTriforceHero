@@ -21,14 +21,14 @@ const { seeAgain } = require('../events-handlers/tvEventsHandlers');
 const { letsPlay } = require('../events-handlers/tvEventsHandlers');
 
 const tvEvents = (socket, io) => {
-	socket.on('changeScreen', changeScreen(socket, db, io));
+	/* socket.on('changeScreen', changeScreen(socket, db, io));
 	socket.on('rupeeChangeScreen', rupeeChangeScreen(socket, db, io));
 	socket.on('connectchangeScreen', connectchangeScreen(socket, db, io));
 	socket.on('secondRupeeChangeScreen', secondRupeeChangeScreen(socket, db, io));
 	socket.on('thirdRupeeChangeScreen', thirdRupeeChangeScreen(socket, db, io));
 	socket.on('nextRupeeChangeScreen', nextRupeeChangeScreen(socket, db, io));
 	socket.on('seeAgain', seeAgain(socket, db, io));
-	socket.on('letsPlay', letsPlay(socket, db, io));
+	socket.on('letsPlay', letsPlay(socket, db, io)); */
 };
 
 module.exports = { tvEvents };

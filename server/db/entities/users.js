@@ -9,4 +9,21 @@ const getAllUsers = async () => {
 	return data;
 };
 
-module.exports = { getAllUsers };
+const createUser = async (name, email, cellphone) => {
+	const { data, error } = await supabase.from('users').insert([
+		{
+			name,
+			email,
+			cel: cellphone,
+			created_at: new Date(),
+		},
+	]);
+	if (error) {
+		console.error(error);
+		return error;
+	}
+	console.log(data);
+	return data;
+};
+
+module.exports = { getAllUsers, createUser };
