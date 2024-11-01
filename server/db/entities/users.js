@@ -14,7 +14,7 @@ const createUser = async (name, email, cellphone) => {
 		{
 			name,
 			email,
-			cel: cellphone,
+			cellphone,
 			created_at: new Date(),
 		},
 	]);

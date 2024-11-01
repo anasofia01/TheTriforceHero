@@ -1,4 +1,3 @@
-import { response } from '../../server/app.js';
 import { router, socket } from '../routes.js';
 
 export default function renderScreen4() {
@@ -15,7 +14,7 @@ export default function renderScreen4() {
         <input type="email" id="email" name="email" placeholder="Email" required/>
       </div>
        <div>
-        <input type="number" id="cellPhone" name="cellPhone" placeholder="CellPhone" required/>
+        <input type="number" id="cellphone" name="cellphone" placeholder="CellPhone" required/>
       </div>
        <div>
         <button type="submit" id="save-form">Send</button>
@@ -35,32 +34,25 @@ export default function renderScreen4() {
 		const data = {
 			name: document.getElementById('name').value,
 			email: document.getElementById('email').value,
-			cellPhone: document.getElementById('cellPhone').value,
+			cellphone: document.getElementById('cellphone').value,
 		};
 
 		// Emitir los datos al servidor
 		// socket.emit('registerInfoSaved', data);
 
-		// try {
-		// 	const response = await fetch('http://localhost:5050/users', {
-		// 		method: 'POST',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 		},
-		// 		body: JSON.stringify(data),
-		// 	});
-		// } catch (error) {
-		// 	console.error(error);
-		// }
-
-		// const dataSupabase = await response.json();
-		// if (!response.ok) {
-		// 	console.error(error);
-		// }
-
-		// console.log(dataSupabase);
+		try {
+			const response = await fetch('http://localhost:5050/users', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			});
+		} catch (error) {
+			console.error(error);
+		}
 
 		// Navegar a la pantalla de agradecimiento
-		// router.navigateTo('/thanksScreen');
+		router.navigateTo('/thanksScreen');
 	});
 }
