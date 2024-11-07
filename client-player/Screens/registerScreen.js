@@ -37,9 +37,6 @@ export default function renderScreen4() {
 			cellphone: document.getElementById('cellphone').value,
 		};
 
-		// Emitir los datos al servidor
-		// socket.emit('registerInfoSaved', data);
-
 		try {
 			const response = await fetch('http://localhost:5050/users', {
 				method: 'POST',
@@ -48,6 +45,9 @@ export default function renderScreen4() {
 				},
 				body: JSON.stringify(data),
 			});
+			if (response.ok) {
+				localStorage.setItem('userEmail', data.email);
+			}
 		} catch (error) {
 			console.error(error);
 		}

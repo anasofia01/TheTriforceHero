@@ -1,9 +1,86 @@
-#gifNotify{
-  width: 200px;
-  height: 200px;
+#gifNotify {
+	width: 200px;
+	height: 200px;
 }
 
 #moveSword {
-  width: 300px;
-  height: 500px;
+	width: 300px;
+	height: 500px;
+}
+
+body {
+	background-image: url('https://cdn1.epicgames.com/ue/product/Screenshot/21-1920x1080-fc4b0ed078d043e6cef99e324f0e0b23.png?resize=1&w=1920');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	font-family: Arial, sans-serif;
+	color: #fff;
+}
+
+#app {
+	background-color: rgba(0, 0, 0, 0.8);
+	padding: 2rem;
+	border-radius: 10px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+	text-align: center;
+	max-width: 400px;
+	width: 100%;
+}
+
+h1 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+h4 {
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+}
+
+p {
+	font-size: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+form div {
+	margin-bottom: 1rem;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='number'] {
+	width: 100%;
+	padding: 0.75rem;
+	border: none;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.205);
+	color: #fff;
+	font-size: 1rem;
+}
+
+input[type='text']::placeholder,
+input[type='email']::placeholder,
+input[type='number']::placeholder {
+	color: #ccc;
+}
+
+button[type='submit'] {
+	width: 100%;
+	padding: 0.75rem;
+	background-color: #ff6600;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+button[type='submit']:hover {
+	background-color: #e65c00;
 }

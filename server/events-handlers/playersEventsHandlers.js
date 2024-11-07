@@ -1,11 +1,11 @@
 const { exampleFunction } = require('../utils/helpers');
 const { createUsers } = require('../controllers/users');
 
-const changeScreen = (socket, db, io) => {
+const changeScreen = (socket, io) => {
 	return () => {};
 };
 
-const validedPlays = (socket, db, io) => {
+const validedPlays = (socket, io) => {
 	return () => {};
 };
 
@@ -15,11 +15,11 @@ const registerInfoSaved = (socket, io, data) => {
 	};
 };
 
-const changeScreenPhone = (socket, db, io) => {
+const changeScreenPhone = (socket, io) => {
 	return () => {};
 };
 
-const winner = (socket, db, io) => {
+const winner = (socket, io) => {
 	return (data) => {
 		console.log('Received winner event:', data.message);
 		// Emitir el evento tvScreenChanged a la TV para refrescar la pantalla actual (tutorialScreen)
@@ -27,7 +27,7 @@ const winner = (socket, db, io) => {
 	};
 };
 
-const loser = (socket, db, io) => {
+const loser = (socket, io) => {
 	return (data) => {
 		console.log('Received loser event:', data.message);
 		// Emitir el evento tvScreenChanged a la TV para refrescar la pantalla actual (tutorialScreen)

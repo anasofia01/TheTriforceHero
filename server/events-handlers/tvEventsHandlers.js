@@ -1,15 +1,14 @@
 const { exampleFunction } = require('../utils/helpers');
 
-const connectUser = (socket, db, io) => {
+const connectUser = (socket, io) => {
 	return () => {};
 };
 
-const startGame = (socket, db, io) => {
+const startGame = (socket, io) => {
 	return () => {};
 };
 
-
-const connectchangeScreen = (socket, db, io) => {
+const connectchangeScreen = (socket, io) => {
 	return (data) => {
 		console.log('Received connectchangeScreen event:', data.message);
 		// Emit an action to all connected clients or to a specific room
@@ -17,7 +16,7 @@ const connectchangeScreen = (socket, db, io) => {
 	};
 };
 
-const changeScreen = (socket, db, io) => {
+const changeScreen = (socket, io) => {
 	return (data) => {
 		console.log('Received changeScreen event:', data.message);
 		// Emit an action to all connected clients or to a specific room
@@ -25,55 +24,49 @@ const changeScreen = (socket, db, io) => {
 	};
 };
 
-const rupeeChangeScreen = (socket, db, io) => {
+const rupeeChangeScreen = (socket, io) => {
 	return (data) => {
 		console.log('Received rupeeChangeScreen event:', data.message);
 		io.emit('rupeeScreenChanged', { screen: 'allSetScreen' });
 	};
 };
 
-
-const secondRupeeChangeScreen  = (socket, db, io) => {
+const secondRupeeChangeScreen = (socket, io) => {
 	return (data) => {
 		console.log('Received secondRupeeChangeScreen event:', data.message);
 		io.emit('secondRupeeScreenChanged', { screen: 'swordTryScreen' });
 	};
 };
 
-
-const thirdRupeeChangeScreen  = (socket, db, io) => {
+const thirdRupeeChangeScreen = (socket, io) => {
 	return (data) => {
 		console.log('Received thirdRupeeChangeScreen event:', data.message);
 		io.emit('thirdRupeeScreenChanged', { screen: 'loadingScreen' });
 	};
 };
 
-
-const nextRupeeChangeScreen  = (socket, db, io) => {
+const nextRupeeChangeScreen = (socket, io) => {
 	return (data) => {
 		console.log('Received nextRupeeChangeScreen event:', data.message);
 		io.emit('nextRupeeScreenChanged', { screen: 'readyScreen' });
 	};
 };
 
-
-const seeAgain = (socket, db, io) => {
+const seeAgain = (socket, io) => {
 	return (data) => {
-			console.log('Received seeAgain event:', data.message);
-			// Emitir el evento tvScreenChanged a la TV para refrescar la pantalla actual (tutorialScreen)
-			io.emit('seeAgainT', { screen: 'tutorialScreen' });
+		console.log('Received seeAgain event:', data.message);
+		// Emitir el evento tvScreenChanged a la TV para refrescar la pantalla actual (tutorialScreen)
+		io.emit('seeAgainT', { screen: 'tutorialScreen' });
 	};
 };
 
-
-const letsPlay = (socket, db, io) => {
+const letsPlay = (socket, io) => {
 	return (data) => {
-			console.log('Received letsPlay event:', data.message);
-			// Emitir el evento tvScreenChanged a la TV para refrescar la pantalla actual (tutorialScreen)
-			io.emit('letsPlay', { screen: 'counterScreen' });
+		console.log('Received letsPlay event:', data.message);
+		// Emitir el evento tvScreenChanged a la TV para refrescar la pantalla actual (tutorialScreen)
+		io.emit('letsPlay', { screen: 'counterScreen' });
 	};
 };
-
 
 module.exports = {
 	connectUser,
@@ -85,5 +78,5 @@ module.exports = {
 	thirdRupeeChangeScreen,
 	nextRupeeChangeScreen,
 	seeAgain,
-	letsPlay
+	letsPlay,
 };

@@ -1,11 +1,8 @@
-const { changeScreen } = require('../events-handlers/playersEventsHandlers');
-const { winner } = require('../events-handlers/playersEventsHandlers');
-const { loser } = require('../events-handlers/playersEventsHandlers');
-const { registerInfoSaved } = require('../events-handlers/playersEventsHandlers');
+const { changeScreen, winner, loser, registerInfoSaved } = require('../events-handlers/playersEventsHandlers');
 
 const playersEvents = (socket, io) => {
-	/* socket.on('winner', winner(socket, db, io));
-	socket.on('loser', loser(socket, db, io)); */
+	socket.on('winner', winner(socket, io));
+	socket.on('loser', loser(socket, io));
 	socket.on('motion-data', (data) => {
 		console.log('Motion data:', data);
 	});
