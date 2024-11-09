@@ -22,4 +22,12 @@ const createUsers = async (req, res) => {
 	}
 };
 
-module.exports = { getUsers, createUsers };
+const getUserbyEmail = async (email) => {
+	try {
+		return await users.getUserbyEmail(email);
+	} catch (error) {
+		console.error(error.message);
+	}
+};
+
+module.exports = { getUsers, createUsers, getUserbyEmail };

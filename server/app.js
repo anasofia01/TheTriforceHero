@@ -27,12 +27,14 @@ app.get('/app2/*', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('¡Servidor Express funcionando correctamente!');
+	res.send('¡Servidor Express funcionando correctamente!');
 });
-
 
 const usersRouter = require('./routes/users');
 
+const notificationRouter = require('./routes/notifications');
+
 app.use('/', usersRouter);
+app.use('/', notificationRouter);
 
 module.exports = app;

@@ -26,4 +26,13 @@ const createUser = async (name, email, cellphone) => {
 	return data;
 };
 
-module.exports = { getAllUsers, createUser };
+const getUserbyEmail = async (email) => {
+	const { data, error } = await supabase.from('users').select().eq('email', email);
+	if (error) {
+		console.error(error);
+		return error;
+	}
+	return data.length > 0 ? data[0] : null;
+};
+
+module.exports = { getAllUsers, createUser, getUserbyEmail };
