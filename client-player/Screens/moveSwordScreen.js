@@ -30,6 +30,7 @@ export default function renderScreen3() {
 			router.navigateTo('/LoserScreen');
 		}
 	});
+	
 	// let socket = io("http://172.20.10.2:5050", { path: "/real-time" });
 
 	const canvas = document.getElementById('motionCanvas');
