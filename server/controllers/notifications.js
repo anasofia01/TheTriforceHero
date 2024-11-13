@@ -15,7 +15,7 @@ const sendEmailOption1 = async (request, response) => {
 		const allCoupons = await coupons.getAllCoupons();
 		const randomCoupon = allCoupons[Math.floor(Math.random() * allCoupons.length)];
 		await coupons.createCouponByUser(randomCoupon.id, user.id);
-		await sendEmail(user.email, user.name, user.coupon);
+		await sendEmail(user.email, user.name, randomCoupon.name);
 		return response.status(201).json({ message: 'Fine' });
 	} catch (error) {
 		return response.status(500).json({ error: error.message });
