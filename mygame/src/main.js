@@ -35,13 +35,13 @@ scene('juego', () => {
     },
   ]);
 
-  // Rectángulo para visualizar el área de colisión
+  // Rectángulo para visualizar el área de colisión (ahora invisible)
   const colisionVisual = add([
     rect(32, 32), // Tamaño inicial
-    color(255, 0, 0),
     pos(link.pos), // Sincronizado con Link
-    outline(2), // Borde
+    outline(2), // Borde visible (opcional)
     z(1), // Asegura que esté encima del fondo
+    opacity(0), // Hacerlo invisible
   ]);
 
   // Áreas de colisión personalizadas por sprite
