@@ -19,6 +19,7 @@ loadSprite('Pulpodos', '../www/sprites/Pulpodos.png');
 loadSprite('PulpoDaño', '../www/sprites/PulpoDaño.png');
 loadSprite('PulpoPolvo', '../www/sprites/PulpoPolvo.png');
 
+// Escena principal
 scene('juego', () => {
   // Agregar el fondo
   add([
@@ -89,6 +90,7 @@ scene('juego', () => {
     colisionVisual.height = height;
     colisionVisual.pos = link.pos.add(offset);
 
+    // Si debe volver a "quieto", esperar un momento antes de cambiar
     if (volverAQuieto) {
       wait(0.4, () => {
         if (link.estado === estado) {
@@ -104,64 +106,62 @@ scene('juego', () => {
     colisionVisual.pos = link.pos.add(offset);
   });
 
-  // Controles para cambiar sprites
+  // Controles para ataques
   onKeyPress('right', () => cambiarSprite('derecha'));
   onKeyPress('left', () => cambiarSprite('izquierda'));
   onKeyPress('up', () => cambiarSprite('frente'));
 
-  // **Integración del enemigo Pulpo**
+  // **Generar Pulpo**
   function generarPulpo() {
-		const direcciones = [
-			{ x: 0, y: rand(0, height()) },
-			{ x: width(), y: rand(0, height()) },
-			{ x: rand(0, width()), y: 0 },
-		];
-		const dir = choose(direcciones);
+    const direcciones = [
+      { x: 0, y: rand(0, height()) },
+      { x: width(), y: rand(0, height()) },
+      { x: rand(0, width()), y: 0 },
+    ];
+    const dir = choose(direcciones);
 
-		const pulpo = add([
-			sprite('Pulpo'),
-			pos(dir.x, dir.y),
-			area(),
-			'Pulpo', // Etiqueta para colisiones
-			{
-				vivo: true,
-				spriteFrame: 0, // Cambiar "frame" por "spriteFrame"
-			},
-		]);
+    const pulpo = add([
+      sprite('Pulpo'),
+      pos(dir.x, dir.y),
+      area(),
+      'Pulpo', // Etiqueta para colisiones
+      {
+        vivo: true,
+        spriteFrame: 0, // Cambiar "frame" por "spriteFrame"
+      },
+    ]);
 
-		const velocidad = 50;
-		const direccion = vec2(width() / 2, height() / 2).sub(pulpo.pos).unit();
+    const velocidad = 50;
+    const direccion = vec2(width() / 2, height() / 2).sub(pulpo.pos).unit();
 
-		// Alternar sprites mientras se mueve
-		loop(0.3, () => {
-			if (pulpo.vivo) {
-				pulpo.use(sprite(pulpo.spriteFrame === 0 ? 'Pulpodos' : 'Pulpo'));
-				pulpo.spriteFrame = pulpo.spriteFrame === 0 ? 1 : 0; // Usar "spriteFrame"
-			}
-		});
+    // Alternar sprites mientras se mueve
+    loop(0.3, () => {
+      if (pulpo.vivo) {
+        pulpo.use(sprite(pulpo.spriteFrame === 0 ? 'Pulpodos' : 'Pulpo'));
+        pulpo.spriteFrame = pulpo.spriteFrame === 0 ? 1 : 0; // Usar "spriteFrame"
+      }
+    });
 
-		pulpo.onUpdate(() => {
-			if (pulpo.vivo) pulpo.move(direccion.scale(velocidad));
-		});
+    pulpo.onUpdate(() => {
+      if (pulpo.vivo) pulpo.move(direccion.scale(velocidad));
+    });
 
-		// Colisión con Link
-		pulpo.onCollide('Link', () => {
-			if (!pulpo.vivo) return;
+    // Colisión con Link
+    pulpo.onCollide('Link', () => {
+      if (!pulpo.vivo) return;
 
-			if (link.estado === 'quieto') {
-				cambiarSprite('dañoFrente');
-				link.vivo = false; // Link muere
-			} else {
-				pulpo.vivo = false;
-				pulpo.use(sprite('PulpoDaño'));
-				wait(0.5, () => {
-					pulpo.use(sprite('PulpoPolvo'));
-					wait(0.5, () => destroy(pulpo));
-				});
-			}
-		});
-	}
-
+      if (link.estado === 'quieto') {
+        cambiarSprite('dañoFrente');
+      } else {
+        pulpo.vivo = false;
+        pulpo.use(sprite('PulpoDaño'));
+        wait(0.5, () => {
+          pulpo.use(sprite('PulpoPolvo'));
+          wait(0.5, () => destroy(pulpo));
+        });
+      }
+    });
+  }
 
   // Generar Pulpos periódicamente
   loop(2, () => generarPulpo());
