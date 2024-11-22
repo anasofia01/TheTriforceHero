@@ -42,7 +42,7 @@ scene('juego', () => {
     },
   ]);
 
-  // Rectángulo para visualizar el área de colisión (invisible)
+  // Rectángulo para visualizar el área de colisión de Link (invisible)
   const colisionVisual = add([
     rect(32, 32), // Tamaño inicial
     pos(link.pos), // Sincronizado con Link
@@ -131,6 +131,21 @@ scene('juego', () => {
       },
     ]);
 
+    // Rectángulo para visualizar el área de colisión del pulpo
+    const colisionPulpo = add([
+      rect(110, 110), // Tamaño inicial
+      pos(pulpo.pos), // Sincronizado con Pulpo
+      outline(2), // Borde visible (opcional)
+      z(1), // Asegura que esté encima del fondo
+      opacity(0), // Hacerlo visible para ver la colisión
+      { pulpo }, // Asociar con el pulpo
+    ]);
+
+    // Actualizar el área de colisión del pulpo
+    pulpo.onUpdate(() => {
+      colisionPulpo.pos = pulpo.pos; // Sincronizar con la posición del pulpo
+    });
+
     const velocidad = 50;
     const direccion = vec2(width() / 2, height() / 2).sub(pulpo.pos).unit();
 
@@ -157,7 +172,10 @@ scene('juego', () => {
         pulpo.use(sprite('PulpoDaño'));
         wait(0.5, () => {
           pulpo.use(sprite('PulpoPolvo'));
-          wait(0.5, () => destroy(pulpo));
+          wait(0.5, () => {
+            destroy(pulpo); // Eliminar pulpo de la pantalla
+            destroy(colisionPulpo); // Eliminar área de colisión del pulpo
+          });
         });
       }
     });
