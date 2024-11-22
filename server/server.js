@@ -1,12 +1,19 @@
-const { createServer } = require('http');
-require('dotenv/config');
+const { createServer } = require("http");
+require("dotenv/config");
 
-const app = require('./app.js');
-const { initSocket } = require('./socket.js');
+const app = require("./app.js");
+const { initSocket } = require("./socket.js");
+const { initSerial } = require("./serial.js"); // Importar la inicialización del serial
 
-const httpServer = createServer(app); // Explicity creates an HTTP server from the Express app
+const httpServer = createServer(app); // Crea un servidor HTTP a partir de la app de Express
 
-// Initialize Socket.IO
+// Inicializar Socket.IO
 initSocket(httpServer);
 
-httpServer.listen(5050, () => console.log('server starting 🚀🆙✔ on http://localhost:5050'));
+// Inicializar la comunicación con Arduino
+initSerial();
+
+// Iniciar el servidor
+httpServer.listen(5050, () => {
+  console.log("Servidor corriendo 🚀 en http://localhost:5050");
+});
