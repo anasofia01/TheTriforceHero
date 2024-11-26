@@ -19,50 +19,102 @@ loadSprite('Pulpodos', '../www/sprites/Pulpodos.png');
 loadSprite('PulpoDaño', '../www/sprites/PulpoDaño.png');
 loadSprite('PulpoPolvo', '../www/sprites/PulpoPolvo.png');
 
+// Definir las áreas de colisión personalizadas para Link
+const areasColision = {
+  quieto: { width: 75, height: 100, offset: vec2(55, 53) },
+  derecha: { width: 75, height: 90, offset: vec2(50, 55) },
+  izquierda: { width: 75, height: 90, offset: vec2(65, 55) },
+  frente: { width: 75, height: 90, offset: vec2(55, 70) },
+  dañoIzq: { width: 100, height: 100, offset: vec2(50, 50) },
+  dañoDer: { width: 100, height: 100, offset: vec2(50, 50) },
+  dañoFrente: { width: 100, height: 100, offset: vec2(50, 50) },
+};
+
+// Definir las áreas de colisión para la espada
+const areasEspada = {
+  derecha: { width: 60, height: 110, offset: vec2(128, 40) },
+  izquierda: { width: 60, height: 110, offset: vec2(0, 40) },
+  frente: { width: 85, height: 70, offset: vec2(50, 0) },
+};
+
 // Escena principal
 scene('juego', () => {
   // Agregar el fondo
   add([
     sprite('fondo', {
-      width: 1490, // Tamaño del canvas
-      height: 805, // Tamaño del canvas
+      width: 1490,
+      height: 805,
     }),
-    pos(0, 0), // Posición inicial
+    pos(0, 0),
   ]);
 
   // Agregar a Link
   const link = add([
-    sprite('LinkStay'), // Sprite por defecto
-    pos(width() / 2.28, height() / 1.7), // Centro de la pantalla
-    area(), // Habilita colisiones
+    sprite('LinkStay'), // Sprite inicial
+    pos(width() / 2.28, height() / 1.7), // Posición inicial
+    area(), // Activar colisiones
+    outline(2, RED), // Resaltar colisión
+    opacity(1), // Opacidad visible para el área
     'Link', // Etiqueta para colisiones
     {
-      estado: 'quieto', // Estado inicial (para controlar las animaciones)
-      vivo: true, // Estado de Link
+      estado: 'quieto', // Estado inicial
+      vivo: true, // Indica que Link está vivo
     },
   ]);
 
-  // Rectángulo para visualizar el área de colisión de Link (invisible)
+  // Crear un rectángulo para visualizar el área de colisión de Link
   const colisionVisual = add([
-    rect(32, 32), // Tamaño inicial
-    pos(link.pos), // Sincronizado con Link
-    outline(2), // Borde visible (opcional)
+    rect(100, 100), // Tamaño inicial
+    pos(link.pos), // Sincronizar con la posición de Link
+    outline(2, YELLOW), // Borde visible en amarillo
     z(1), // Asegura que esté encima del fondo
-    opacity(0), // Hacerlo invisible
+    opacity(0.5), // Hacerlo visible con opacidad
   ]);
 
-  // Áreas de colisión personalizadas por sprite
-  const areasColision = {
-    quieto: { width: 100, height: 100, offset: vec2(50, 50) },
-    derecha: { width: 160, height: 100, offset: vec2(40, 50) },
-    izquierda: { width: 160, height: 100, offset: vec2(-4, 50) },
-    frente: { width: 100, height: 170, offset: vec2(40, 0) },
-    dañoIzq: { width: 100, height: 100, offset: vec2(50, 50) },
-    dañoDer: { width: 100, height: 100, offset: vec2(50, 50) },
-    dañoFrente: { width: 100, height: 100, offset: vec2(50, 60) },
-  };
+  // Crear un rectángulo para visualizar el área de la espada
+  const espadaVisual = add([
+    rect(20, 20), // Tamaño inicial
+    pos(link.pos), // Posición sincronizada con Link
+    outline(2, RED), // Borde visible en rojo
+    z(1), // Sobre el fondo
+    opacity(0), // Oculto por defecto
+  ]);
 
-  // Función para cambiar el sprite y actualizar el área de colisión
+  // Función para actualizar el área de colisión de Link y la espada
+  function actualizarColisionLink(estado) {
+    const colisionLink = areasColision[estado];
+    if (colisionLink) {
+      link.area.width = colisionLink.width;
+      link.area.height = colisionLink.height;
+      link.area.offset = colisionLink.offset;
+
+      // Actualizar rectángulo visual de Link
+      colisionVisual.width = colisionLink.width;
+      colisionVisual.height = colisionLink.height;
+      colisionVisual.pos = link.pos.add(colisionLink.offset);
+    }
+
+    const colisionEspada = areasEspada[estado];
+    if (colisionEspada) {
+      espadaVisual.width = colisionEspada.width;
+      espadaVisual.height = colisionEspada.height;
+      espadaVisual.pos = link.pos.add(colisionEspada.offset);
+      espadaVisual.opacity = 0.5; // Mostrar si está activa
+    } else {
+      espadaVisual.opacity = 0; // Ocultar si no está activa
+    }
+  }
+
+  // Actualizar la posición de los rectángulos visuales cuando Link se mueve
+  link.onUpdate(() => {
+    const offsetLink = areasColision[link.estado]?.offset || vec2(0, 0);
+    colisionVisual.pos = link.pos.add(offsetLink);
+
+    const offsetEspada = areasEspada[link.estado]?.offset || vec2(0, 0);
+    espadaVisual.pos = link.pos.add(offsetEspada);
+  });
+
+  // Modificar la función cambiarSprite para incluir la actualización
   function cambiarSprite(estado, volverAQuieto = true) {
     const sprites = {
       quieto: 'LinkStay',
@@ -74,23 +126,14 @@ scene('juego', () => {
       dañoFrente: 'LinkDañoFrente',
     };
 
-    if (!link.vivo) return; // No cambiar sprites si está muerto
+    if (!link.vivo) return; // No cambiar si está muerto
 
     link.use(sprite(sprites[estado]));
     link.estado = estado;
 
-    // Actualizar el área de colisión
-    const { width, height, offset } = areasColision[estado];
-    link.area.width = width;
-    link.area.height = height;
-    link.area.offset = offset;
+    // Actualizar el área de colisión y el rectángulo visual
+    actualizarColisionLink(estado);
 
-    // Actualizar el rectángulo visual
-    colisionVisual.width = width;
-    colisionVisual.height = height;
-    colisionVisual.pos = link.pos.add(offset);
-
-    // Si debe volver a "quieto", esperar un momento antes de cambiar
     if (volverAQuieto) {
       wait(0.4, () => {
         if (link.estado === estado) {
@@ -100,16 +143,11 @@ scene('juego', () => {
     }
   }
 
-  // Sincronizar el rectángulo de colisión con la posición de Link
-  link.onUpdate(() => {
-    const offset = areasColision[link.estado].offset || vec2(0, 0);
-    colisionVisual.pos = link.pos.add(offset);
-  });
-
   // Controles para ataques
   onKeyPress('right', () => cambiarSprite('derecha'));
   onKeyPress('left', () => cambiarSprite('izquierda'));
   onKeyPress('up', () => cambiarSprite('frente'));
+
 
   // **Generar Pulpo**
   function generarPulpo() {
@@ -137,7 +175,7 @@ scene('juego', () => {
       pos(pulpo.pos), // Sincronizado con Pulpo
       outline(2), // Borde visible (opcional)
       z(1), // Asegura que esté encima del fondo
-      opacity(0), // Hacerlo visible para ver la colisión
+      opacity(0.5), // Hacerlo visible para ver la colisión
       { pulpo }, // Asociar con el pulpo
     ]);
 
