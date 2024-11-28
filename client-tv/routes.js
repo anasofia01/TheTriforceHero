@@ -34,6 +34,22 @@ loadSprite('FantasmaDos', './sprites/FantasmaDos.png');
 loadSprite('FantasmaDaño', './sprites/FantasmaDaño.png');
 loadSprite('FantasmaPolvo', './sprites/FantasmaPolvo.png');
 
+loadSprite('Corazon1', './sprites/Corazon1.png');
+loadSprite('CorazonMedio1', './sprites/CorazonMedio1.png');
+
+loadSprite('Corazon2', './sprites/Corazon2.png');
+loadSprite('CorazonMedio2', './sprites/CorazonMedio2.png');
+
+loadSprite('Corazon3', './sprites/Corazon3.png');
+loadSprite('CorazonMedio3', './sprites/CorazonMedio3.png');
+
+loadSprite('Corazon4', './sprites/Corazon4.png');
+loadSprite('CorazonMedio4', './sprites/CorazonMedio4.png');
+
+loadSprite('Corazon5', './sprites/Corazon5.png');
+loadSprite('CorazonMedio5', './sprites/CorazonMedio5.png');
+
+
 const router = new Router({
 	// check this for more features with Router: https://github.com/Graidenix/vanilla-router
 	mode: 'hash',

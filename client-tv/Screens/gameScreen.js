@@ -3,10 +3,10 @@ import { router, socket } from '../routes.js';
 export default function renderScreen12() {
 	const app = document.getElementById('app');
 
-	
+
 // Escena principal
 scene('juego', () => {
-	// Fondo
+	// Fondo inicial
 	add([sprite('fondo', { width: 1490, height: 805 }), pos(0, 0)]);
 
 	// Link en su posición inicial
@@ -18,18 +18,59 @@ scene('juego', () => {
 			"link", // Etiqueta para identificar a Link
 	]);
 
-	// Espada (no añadimos inicialmente, se añadirá dinámicamente)
+	// Espada
 	let espada = null;
 
-	// Barra de vida
-	const barraVida = add([
-			rect(200, 20), // Rectángulo como barra de vida
-			pos(20, 20),   // Posición en la pantalla
-			color(0, 255, 0), // Color verde inicial
-			outline(2),
-			"vida",
-	]);
-	let vida = 100;
+	// Vida inicial de Link
+	let vida = 10;
+
+	// Corazones en pantalla
+	let corazones = []; // Arreglo que almacena los sprites de corazones
+
+	// Inicializamos los corazones en pantalla
+	function inicializarCorazones() {
+			for (let i = 1; i <= 5; i++) {
+					const corazon = add([
+							sprite(`Corazon${i}`),
+							pos(20 + (i - 1) * 40, 20), // Posiciones horizontales separadas
+							scale(0.2), // Tamaño reducido
+							`corazon${i}`, // Etiqueta para identificar cada corazón
+					]);
+					corazones.push(corazon);
+			}
+	}
+
+	// Mostrar corazones iniciales
+	inicializarCorazones();
+
+	// Función para actualizar corazones según la vida
+	function actualizarCorazones() {
+			if (vida === 0) {
+					// Cambiar a pantalla de Game Over
+					go('gameOver');
+					return;
+			}
+
+			const indice = Math.ceil(vida / 2); // Calcular índice del corazón afectado
+			const esMedio = vida % 2 !== 0; // Verificar si la vida es impar (corazón medio)
+
+			if (esMedio) {
+					// Cambiar sprite al corazón medio
+					corazones[indice - 1].use(sprite(`CorazonMedio${indice}`));
+			} else {
+					// Eliminar el corazón medio cuando vida es par
+					destroy(corazones[indice]);
+					corazones.pop();
+			}
+	}
+
+	// Función para reducir la vida
+	function recibirDaño() {
+			if (vida > 0) {
+					vida -= 1;
+					actualizarCorazones();
+			}
+	}
 
 	// Función para cambiar la sprite de Link y manejar la espada
 	function atacar(direccion, offsetX, offsetY, spriteEspada) {
@@ -50,7 +91,7 @@ scene('juego', () => {
 			]);
 
 			// Volver al estado inicial y eliminar la espada
-			wait(0.4, () => {
+			wait(0.5, () => {
 					cambiarSprite('LinkStay');
 					if (espada) {
 							destroy(espada);
@@ -102,9 +143,12 @@ scene('juego', () => {
 					"fantasma",
 					{
 							cambiarSprite: false,
+							estaMuriendo: false, // Propiedad para controlar animación de muerte
+							yaInfligioDanio: false, // Propiedad para controlar daño
 					},
 			]);
 
+			// Cambiar sprite del fantasma periódicamente
 			loop(0.5, () => {
 					if (fantasma.exists()) {
 							fantasma.use(fantasma.cambiarSprite ? sprite('Fantasma') : sprite('FantasmaDos'));
@@ -112,47 +156,57 @@ scene('juego', () => {
 					}
 			});
 
+			// Movimiento del fantasma hacia Link
 			fantasma.onUpdate(() => {
 					const direccion = LinkStay.pos.sub(fantasma.pos).unit();
 					fantasma.move(direccion.scale(100));
 			});
 
+			// Al ser golpeado por la espada
 			fantasma.onCollide("espada", () => {
-					fantasma.use(sprite("FantasmaDaño")); // Cambiar a sprite de daño
-					wait(0.2, () => {
-							fantasma.use(sprite("FantasmaPolvo")); // Cambiar a sprite de polvo
-							wait(0.2, () => destroy(fantasma)); // Eliminar después de la animación
-					});
-			});
-
-			fantasma.onCollide("link", () => {
-					destroy(fantasma);
-					vida -= 8;
-					if (vida <= 0) {
-							vida = 0;
+					if (!fantasma.estaMuriendo) { // Evitar reinicio de animación
+							fantasma.estaMuriendo = true; // Marcar que está muriendo
+							fantasma.use(sprite("FantasmaDaño")); // Cambiar a sprite de daño
+							wait(0.2, () => {
+									fantasma.use(sprite("FantasmaPolvo")); // Cambiar a sprite de polvo
+									wait(0.2, () => destroy(fantasma)); // Eliminar después de la animación
+							});
 					}
-					cambiarSprite("LinkDaño"); // Cambiar a sprite de daño
-					wait(0.4, () => cambiarSprite("LinkStay")); // Regresar al sprite normal
-					actualizarBarraVida();
 			});
-	}
 
-	// Función para actualizar la barra de vida
-	function actualizarBarraVida() {
-			barraVida.width = (vida / 100) * 200;
-			if (vida > 50) {
-					barraVida.color = rgb(0, 255, 0);
-			} else if (vida > 20) {
-					barraVida.color = rgb(255, 165, 0);
-			} else {
-					barraVida.color = rgb(255, 0, 0);
-			}
+			// Al colisionar con Link
+fantasma.onCollide("link", () => {
+	if (!fantasma.yaInfligioDanio) { // Verificar si ya infligió daño
+			fantasma.yaInfligioDanio = true; // Marcar como que infligió daño
+			recibirDaño(); // Reducir vida al colisionar
+			cambiarSprite("LinkDaño"); // Cambiar a sprite de daño
+			destroy(fantasma); // Destruir al fantasma de inmediato
+			wait(0.4, () => cambiarSprite("LinkStay")); // Regresar al sprite normal
 	}
+});
+
+	}
+});
+
+// Escena de Game Over
+scene('gameOver', () => {
+	// Fondo negro
+	add([
+			rect(width(), height()), // Crear un rectángulo que cubra toda la pantalla
+			pos(0, 0),
+			color(0, 0, 0), // Color negro para el fondo
+	]);
+
+	// Texto de "GAME OVER"
+	add([
+			text("GAME OVER", { size: 48 }), // Texto con tamaño especificado
+			pos(width() / 2, height() / 2), // Posición centrada
+			color(255, 255, 255), // Color blanco
+	]);
 });
 
 // Iniciar escena
 go('juego');
-
 
 
 }
