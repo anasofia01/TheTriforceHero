@@ -28,11 +28,11 @@ loadSprite('LinkFrente', './sprites/LinkFrente.png');
 loadSprite('EspadaDerecha', './sprites/EspadaDerecha.png');
 loadSprite('EspadaIzquierda', './sprites/EspadaIzquierda.png');
 loadSprite('EspadaFrente', './sprites/EspadaFrente.png');
-loadSprite('LinkDañoFrente', './sprites/LinkDañoFrente.png');
-loadSprite('Pulpo', './sprites/Pulpo.png');
-loadSprite('Pulpodos', './sprites/Pulpodos.png');
-loadSprite('PulpoDaño', './sprites/PulpoDaño.png');
-loadSprite('PulpoPolvo', './sprites/PulpoPolvo.png');
+loadSprite('LinkDaño', './sprites/LinkDaño.png');
+loadSprite('Fantasma', './sprites/Fantasma.png');
+loadSprite('FantasmaDos', './sprites/FantasmaDos.png');
+loadSprite('FantasmaDaño', './sprites/FantasmaDaño.png');
+loadSprite('FantasmaPolvo', './sprites/FantasmaPolvo.png');
 
 const router = new Router({
 	// check this for more features with Router: https://github.com/Graidenix/vanilla-router
