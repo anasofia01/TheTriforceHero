@@ -49,6 +49,15 @@ loadSprite('CorazonMedio4', './sprites/CorazonMedio4.png');
 loadSprite('Corazon5', './sprites/Corazon5.png');
 loadSprite('CorazonMedio5', './sprites/CorazonMedio5.png');
 
+loadSprite('EnemigoIz1', './sprites/EnemigoIz1.png');
+loadSprite('EnemigoIz2', './sprites/EnemigoIz2.png');
+loadSprite('EnemigoIz3', './sprites/EnemigoIz3.png');
+loadSprite('EnemigoDe1', './sprites/EnemigoDe1.png');
+loadSprite('EnemigoDe2', './sprites/EnemigoDe2.png');
+loadSprite('EnemigoDe3', './sprites/EnemigoDe3.png');
+loadSprite('EnemigoFe1', './sprites/EnemigoFe1.png');
+loadSprite('EnemigoFe2', './sprites/EnemigoFe2.png');
+loadSprite('EnemigoFe3', './sprites/EnemigoFe3.png');
 
 const router = new Router({
 	// check this for more features with Router: https://github.com/Graidenix/vanilla-router

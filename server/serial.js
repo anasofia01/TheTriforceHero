@@ -3,7 +3,7 @@ const { getIO } = require('./socket'); // Importar la función para obtener la i
 
 // Configuración del puerto serial
 const port = new SerialPort({
-	path: 'COM10', // Asegúrate de que el puerto sea el correcto
+	path: 'COM8', // Asegúrate de que el puerto sea el correcto
 	baudRate: 9600,
 });
 
