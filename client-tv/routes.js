@@ -59,6 +59,15 @@ loadSprite('EnemigoFe1', './sprites/EnemigoFe1.png');
 loadSprite('EnemigoFe2', './sprites/EnemigoFe2.png');
 loadSprite('EnemigoFe3', './sprites/EnemigoFe3.png');
 
+loadSprite('Trifuerza', './sprites/Trifuerza.png');
+loadSprite('Trifuerza1', './sprites/Trifuerza1.png');
+
+loadSprite('Winner', './sprites/Winner.png');
+loadSprite('Loser', './sprites/Loser.png');
+
+
+
+
 const router = new Router({
 	// check this for more features with Router: https://github.com/Graidenix/vanilla-router
 	mode: 'hash',

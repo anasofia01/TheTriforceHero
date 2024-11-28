@@ -8,6 +8,25 @@ export default function renderScreen12() {
 		// Fondo inicial
 		add([sprite('fondo', { width: 1490, height: 805 }), pos(0, 0)]);
 
+
+		const trifuerza = add([
+			sprite('Trifuerza'),
+			pos(718, 660),
+			area(),
+			'trifuerza',
+			{
+				cambiarSprite: false,
+			},
+		]);
+
+
+		loop(0.5, () => {
+			if (trifuerza.exists()) {
+				trifuerza.use(trifuerza.cambiarSprite ? sprite('Trifuerza') : sprite('Trifuerza1'));
+				trifuerza.cambiarSprite = !trifuerza.cambiarSprite;
+			}
+		});
+
 		// Link en su posición inicial
 		const LinkStay = add([
 			sprite('LinkStay'),
@@ -99,23 +118,32 @@ export default function renderScreen12() {
 			LinkStay.use(sprite(spriteLink));
 		}
 
-		// Usar onKeyPress para escuchar las teclas
-		onKeyPress('left', () => {
-			atacar('LinkIzquierda', -60, -30, 'EspadaIzquierda');
-		});
+// Conectar con el servidor (suponiendo que tienes un servidor socket.io corriendo)
+const socket = io();
 
-		onKeyPress('right', () => {
-			atacar('LinkDerecha', 85, -30, 'EspadaDerecha');
-		});
+// Escuchar los eventos emitidos por el servidor y mover a Link
+socket.on('MoveSwordLeft', () => {
+    atacar('LinkIzquierda', -60, -30, 'EspadaIzquierda');
+});
 
-		onKeyPress('up', () => {
-			atacar('LinkFrente', -40, -65, 'EspadaFrente');
-		});
+socket.on('MoveSwordRight', () => {
+    atacar('LinkDerecha', 85, -30, 'EspadaDerecha');
+});
+
+socket.on('MoveSwordFront', () => {
+    atacar('LinkFrente', -40, -65, 'EspadaFrente');
+});
+
 
 		// Generar fantasmas periódicamente
 		loop(1.5, () => {
 			generarFantasma();
 		});
+
+
+
+
+
 
 		// Función para generar un fantasma
 		function generarFantasma() {
@@ -283,35 +311,34 @@ function generarEnemigo() {
 	// Escena de Victoria
 	scene('youWin', () => {
 		// Fondo verde
-		add([
-			rect(width(), height()), // Crear un rectángulo que cubra toda la pantalla
-			pos(0, 0),
-			color(0, 255, 0), // Fondo verde
-		]);
 
-		// Texto de "You Win!"
-		add([
-			text('You Win!', { size: 48 }), // Texto con tamaño especificado
-			pos(width() / 2, height() / 2), // Posición centrada
-			color(255, 255, 255), // Color blanco
-		]);
+		add([sprite('Winner', { width: 1490, height: 805 }), pos(0, 0)]);
+
+// Escuchar los movimientos de la espada y generar confeti
+socket.on('MoveSwordLeft', () => {
+	// Generar confeti en la dirección izquierda
+	addConfetti({ pos: vec2(200, height() / 2), heading: -90 }); // Hacia la izquierda
+});
+
+socket.on('MoveSwordRight', () => {
+	// Generar confeti en la dirección derecha
+	addConfetti({ pos: vec2(width() - 200, height() / 2), heading: 90 }); // Hacia la derecha
+});
+
+socket.on('MoveSwordFront', () => {
+	// Generar confeti en la dirección de frente
+	addConfetti({ pos: vec2(width() / 2, height() / 2), heading: 0 }); // Hacia el frente
+});
+
+
 	});
 
 	// Escena de Game Over
 	scene('gameOver', () => {
 		// Fondo negro
-		add([
-			rect(width(), height()), // Crear un rectángulo que cubra toda la pantalla
-			pos(0, 0),
-			color(0, 0, 0), // Color negro para el fondo
-		]);
 
-		// Texto de "GAME OVER"
-		add([
-			text('GAME OVER', { size: 48 }), // Texto con tamaño especificado
-			pos(width() / 2, height() / 2), // Posición centrada
-			color(255, 255, 255), // Color blanco
-		]);
+		add([sprite('Loser', { width: 1490, height: 805 }), pos(0, 0)]);
+
 	});
 
 	// Iniciar escena
