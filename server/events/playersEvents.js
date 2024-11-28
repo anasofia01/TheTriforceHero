@@ -1,4 +1,12 @@
-const { changeScreen, winner, loser, registerInfoSaved } = require('../events-handlers/playersEventsHandlers');
+const {
+	changeScreen,
+	winner,
+	loser,
+	registerInfoSaved,
+	moveSwordLeft,
+	moveSwordRight,
+	moveSwordFront,
+} = require('../events-handlers/playersEventsHandlers');
 
 const playersEvents = (socket, io) => {
 	socket.on('winner', winner(socket, io));
@@ -12,6 +20,23 @@ const playersEvents = (socket, io) => {
 	socket.on('registerInfoSaved', (data) => {
 		console.log(data);
 		registerInfoSaved(socket, io, data);
+	});
+	socket.on('moveSwordLeft', (data) => {
+		console.log('Movimiento a la izquierda:', data);
+		io.emit('MoveSwordLeft', { direction: 'left', player: socket.id });
+		// Lógica para el movimiento a la izquierda
+	});
+
+	socket.on('moveSwordRight', (data) => {
+		console.log('Movimiento a la derecha:', data);
+		io.emit('MoveSwordRight', { direction: 'right', player: socket.id });
+		// Lógica para el movimiento a la derecha
+	});
+
+	socket.on('moveSwordFront', (data) => {
+		console.log('Movimiento al frente:', data);
+		io.emit('MoveSwordFront', { direction: 'front', player: socket.id });
+		// Lógica para el movimiento al frente
 	});
 };
 

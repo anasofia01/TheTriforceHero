@@ -35,6 +35,27 @@ const loser = (socket, io) => {
 	};
 };
 
+/* const moveSwordLeft = (socket, io) => {
+	return (data) => {
+		console.log('Movimiento a la izquierda recibido:', data);
+		io.emit('MoveSwordLeft', { player: socket.id });
+	};
+};
+
+const moveSwordRight = (socket, io) => {
+	return (data) => {
+		console.log('Movimiento a la derecha recibido:', data);
+		io.emit('MoveSwordRight', { player: socket.id });
+	};
+};
+
+const moveSwordFront = (socket, io) => {
+	return (data) => {
+		console.log('Movimiento al frente recibido:', data);
+		io.emit('MoveSwordFront', { player: socket.id });
+	};
+}; */
+
 module.exports = {
 	changeScreen,
 	validedPlays,
