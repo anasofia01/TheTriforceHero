@@ -3,7 +3,7 @@ import { router, socket } from '../routes.js';
 export default function renderScreen12() {
 	const app = document.getElementById('app');
 
-
+	
 // Escena principal
 scene('juego', () => {
 	// Fondo inicial
@@ -175,17 +175,54 @@ scene('juego', () => {
 			});
 
 			// Al colisionar con Link
-fantasma.onCollide("link", () => {
-	if (!fantasma.yaInfligioDanio) { // Verificar si ya infligió daño
-			fantasma.yaInfligioDanio = true; // Marcar como que infligió daño
-			recibirDaño(); // Reducir vida al colisionar
-			cambiarSprite("LinkDaño"); // Cambiar a sprite de daño
-			destroy(fantasma); // Destruir al fantasma de inmediato
-			wait(0.4, () => cambiarSprite("LinkStay")); // Regresar al sprite normal
+			fantasma.onCollide("link", () => {
+					if (!fantasma.yaInfligioDanio) { // Verificar si ya infligió daño
+							fantasma.yaInfligioDanio = true; // Marcar como que infligió daño
+							recibirDaño(); // Reducir vida al colisionar
+							cambiarSprite("LinkDaño"); // Cambiar a sprite de daño
+							destroy(fantasma); // Destruir al fantasma de inmediato
+							wait(0.4, () => cambiarSprite("LinkStay")); // Regresar al sprite normal
+					}
+			});
 	}
+
+	// Temporizador de 1 minuto
+	let tiempoRestante = 60; // 1 minuto
+	const temporizadorTexto = add([
+			text(tiempoRestante.toString(), { size: 32 }), // Texto del temporizador
+			pos(width() - 120, 20), // Posición en la esquina superior derecha
+			color(255, 255, 255), // Color blanco
+	]);
+
+	// Actualizar el temporizador cada segundo
+	loop(1, () => {
+			if (tiempoRestante > 0) {
+					tiempoRestante--;
+					temporizadorTexto.text = tiempoRestante.toString();
+			} else {
+					// Si el tiempo acaba y Link sigue vivo, cambiar a la pantalla de victoria
+					if (vida > 0) {
+							go('youWin');
+					}
+			}
+	});
 });
 
-	}
+// Escena de Victoria
+scene('youWin', () => {
+	// Fondo verde
+	add([
+			rect(width(), height()), // Crear un rectángulo que cubra toda la pantalla
+			pos(0, 0),
+			color(0, 255, 0), // Fondo verde
+	]);
+
+	// Texto de "You Win!"
+	add([
+			text("You Win!", { size: 48 }), // Texto con tamaño especificado
+			pos(width() / 2, height() / 2), // Posición centrada
+			color(255, 255, 255), // Color blanco
+	]);
 });
 
 // Escena de Game Over
