@@ -13,6 +13,27 @@ import renderScreen12 from './Screens/gameScreen.js';
 import renderScreen13 from './Screens/congratsScreen.js';
 import socket from './socket.js';
 
+kaboom({
+	width: 1490,
+	height: 805,
+	background: [0, 0, 0],
+});
+
+// Cargar sprites
+loadSprite('fondo', './sprites/fondo.png');
+loadSprite('LinkStay', './sprites/LinkStay.png');
+loadSprite('LinkDerecha', './sprites/LinkDerecha.png');
+loadSprite('LinkIzquierda', './sprites/LinkIzquierda.png');
+loadSprite('LinkFrente', './sprites/LinkFrente.png');
+loadSprite('EspadaDerecha', './sprites/EspadaDerecha.png');
+loadSprite('EspadaIzquierda', './sprites/EspadaIzquierda.png');
+loadSprite('EspadaFrente', './sprites/EspadaFrente.png');
+loadSprite('LinkDañoFrente', './sprites/LinkDañoFrente.png');
+loadSprite('Pulpo', './sprites/Pulpo.png');
+loadSprite('Pulpodos', './sprites/Pulpodos.png');
+loadSprite('PulpoDaño', './sprites/PulpoDaño.png');
+loadSprite('PulpoPolvo', './sprites/PulpoPolvo.png');
+
 const router = new Router({
 	// check this for more features with Router: https://github.com/Graidenix/vanilla-router
 	mode: 'hash',
