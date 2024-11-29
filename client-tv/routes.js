@@ -1,4 +1,4 @@
-import renderScreen1 from './Screens/QrCodeScreen.js';
+import renderScreen1 from './Screens/qrCodeScreen.js';
 import renderScreen2 from './Screens/swordScreen.js';
 import renderScreen3 from './Screens/instructionsScreen.js';
 import renderScreen4 from './Screens/allSetScreen.js';

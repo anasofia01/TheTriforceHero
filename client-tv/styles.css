@@ -5,6 +5,10 @@
 
 /*QRCODE*/
 
+#qrCode{
+  width: 400px;
+  height: 400px;
+}
 *{  box-sizing: border-box;
   font-family: 'Lexend Deca', sans-serif;
   margin: 0;

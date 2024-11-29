@@ -10,12 +10,18 @@ export default function renderScreen2() {
     </section>
   `;
 
-  // Escuchar el evento de cambio de pantalla
+  // Flag para garantizar que el evento solo se maneje una vez
+  let eventHandled = false;
+
   socket.on("tvScreenChanged", (data) => {
-    console.log("Evento recibido:", data); // Esto va a la consola del navegador
-    if (data.screen === "instructionsScreen") {
+    // Procesar el evento solo si no ha sido manejado previamente
+    if (!eventHandled && data.screen === "instructionsScreen") {
+      eventHandled = true; // Marcar el evento como manejado
+      console.log("Evento recibido y procesado:", data); // Esto va a la consola del navegador
       console.log("Cambiando de pantalla a instrucciones");
       router.navigateTo("/instructionsScreen"); // Cambiar de pantalla
     }
   });
 }
+
+

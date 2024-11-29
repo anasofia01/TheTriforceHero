@@ -34,7 +34,7 @@ const sendEmail = async (email, name, coupon) => {
 
 const sendEmailWithTemplate = async (email, name, coupon, description) => {
 	sendSmtpEmail.templateId = 1;
-	sendSmtpEmail.subject = 'YOU WON A PRIZE!!!!';
+	sendSmtpEmail.subject = 'YOU WON A PRIZE FROM NINTENDO!!!!';
 	sendSmtpEmail.sender = {
 		name: 'Ana Sofia Pacheco',
 		email: 'pacheco.anasof@gmail.com',
