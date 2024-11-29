@@ -3,17 +3,12 @@ import { router, socket } from '../routes.js';
 export default function renderScreen12() {
 	const app = document.getElementById('app');
 
-	socket.emit('sendMailWinner', 'prueba');
-
-
-
 	kaboom({
 		width: 1490,
 		height: 805,
 		background: [0, 0, 0],
 
-		root: document.getElementById('app')
-
+		root: document.getElementById('app'),
 	});
 
 	// Cargar sprites
@@ -61,8 +56,6 @@ export default function renderScreen12() {
 
 	loadSprite('Winner', './sprites/Winner.png');
 	loadSprite('Loser', './sprites/Loser.png');
-
-
 
 	// Escena principal
 	scene('juego', () => {
@@ -334,7 +327,6 @@ export default function renderScreen12() {
 			text(tiempoRestante.toString(), { size: 64 }), // Texto del temporizador
 			pos(width() - 120, 17), // Posición en la esquina superior derecha
 			color(255, 255, 255), // Color blanco
-
 		]);
 
 		// Actualizar el temporizador cada segundo
@@ -351,35 +343,32 @@ export default function renderScreen12() {
 		});
 	});
 
+	// Escena de Victoria
+	scene('youWin', () => {
+		// Fondo verde
+		add([sprite('Winner', { width: 1490, height: 805 }), pos(0, 0)]);
+		socket.emit('sendMailWinner', { winner: 'You Won!', score: 100 });
 
-// Escena de Victoria
-scene('youWin', () => {
-	// Fondo verde
-	add([sprite('Winner', { width: 1490, height: 805 }), pos(0, 0)]);
-	socket.emit('sendMailWinner', { winner: 'You Won!', score: 100 });
-
-	// Temporizador para salir después de 4 segundos
-	setTimeout(() => {
+		// Temporizador para salir después de 4 segundos
+		setTimeout(() => {
 			socket.emit('winnnnner');
 			router.navigateTo('/congratsScreen');
-	}, 4000); // 4 segundos
-});
+		}, 4000); // 4 segundos
+	});
 
-// Escena de Game Over
-scene('gameOver', () => {
-	// Fondo negro
-	add([sprite('Loser', { width: 1490, height: 805 }), pos(0, 0)]);
-	socket.emit('sendMailLoser', { winner: 'You Lost!', score: 0 });
+	// Escena de Game Over
+	scene('gameOver', () => {
+		// Fondo negro
+		add([sprite('Loser', { width: 1490, height: 805 }), pos(0, 0)]);
+		socket.emit('sendMailLoser', { winner: 'You Lost!', score: 0 });
 
-	// Temporizador para salir después de 4 segundos
-	setTimeout(() => {
+		// Temporizador para salir después de 4 segundos
+		setTimeout(() => {
 			socket.emit('finish');
 			socket.emit('loseeeer');
 			router.navigateTo('/congratsScreen');
-
-	}, 4000); // 4 segundos
-});
-
+		}, 4000); // 4 segundos
+	});
 
 	// Iniciar escena
 	go('juego');
