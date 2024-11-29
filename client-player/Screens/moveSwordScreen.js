@@ -20,6 +20,10 @@ export default function renderScreen3() {
 		router.navigateTo('/registerScreen');
 	});
 
+	socket.on('sendLoser', (data) => {
+		router.navigateTo('/registerScreen');
+	});
+
 	socket.on('winner', (data) => {
 		if (data.screen === 'winnerScreen') {
 			router.navigateTo('/winnerScreen');

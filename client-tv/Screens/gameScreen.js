@@ -304,6 +304,7 @@ export default function renderScreen12() {
 		// Fondo negro
 
 		add([sprite('Loser', { width: 1490, height: 805 }), pos(0, 0)]);
+		socket.emit('sendMailLoser', { winner: 'You Lost!', score: 0 });
 	});
 
 	// Iniciar escena

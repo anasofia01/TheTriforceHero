@@ -22,6 +22,10 @@ const tvEvents = (socket, io) => {
 		console.log('llego al servidor');
 		io.emit('sendWinner', data);
 	});
+	socket.on('sendMailLoser', (data) => {
+		console.log('llego al servidor');
+		io.emit('sendLoser', data);
+	});
 };
 
 module.exports = { tvEvents };
