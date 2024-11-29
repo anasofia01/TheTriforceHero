@@ -147,5 +147,10 @@ export default function renderScreen3() {
 		}
 	}
 
+	socket.on('sendWinner', (data) => {
+		console.log('llega');
+		router.navigateTo('/registerScreen');
+	});
+
 	drawAxes();
 }

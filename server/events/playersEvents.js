@@ -22,21 +22,25 @@ const playersEvents = (socket, io) => {
 		registerInfoSaved(socket, io, data);
 	});
 	socket.on('moveSwordLeft', (data) => {
-		console.log('Movimiento a la izquierda:', data);
 		io.emit('MoveSwordLeft', { direction: 'left', player: socket.id });
+		console.log('movimienti izquierda');
 		// Lógica para el movimiento a la izquierda
 	});
 
 	socket.on('moveSwordRight', (data) => {
-		console.log('Movimiento a la derecha:', data);
 		io.emit('MoveSwordRight', { direction: 'right', player: socket.id });
+		console.log('movimienti derecha');
 		// Lógica para el movimiento a la derecha
 	});
 
 	socket.on('moveSwordFront', (data) => {
-		console.log('Movimiento al frente:', data);
 		io.emit('MoveSwordFront', { direction: 'front', player: socket.id });
+		console.log('movimienti frente');
 		// Lógica para el movimiento al frente
+	});
+
+	socket.on('prueba', (data) => {
+		console.log('se emite desde game screen');
 	});
 };
 
