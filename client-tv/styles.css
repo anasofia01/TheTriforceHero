@@ -1,10 +1,23 @@
 @import url('https://fonts.cdnfonts.com/css/stars-dream');
+@import url('https://fonts.cdnfonts.com/css/pink-fresh');
+@import url('https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&family=Lexend+Deca:wght@100..900&display=swap');
+
+
 /*QRCODE*/
 
 *{  box-sizing: border-box;
+  font-family: 'Lexend Deca', sans-serif;
   margin: 0;
   border: 0;
   padding: 0;}
+
+  .audio-only {
+    position: absolute;
+    width: 100px; /* Tamaño mínimo para ocultar */
+    height: 100px;
+    top: -9999px;
+    left: -9999px;
+}
 
 #qrCodeSection{
   display: flex;
@@ -42,10 +55,14 @@
   }
 
   #qrCodeSection4{
+    font-family: 'Pink Fresh', sans-serif;
     color: aliceblue;
-    font-size: 64px;
-    font-style: light;
-    font-weight: normal;
+    font-size: 50px;
+    font-style: bold;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
   #battleLinkPig {
     width: 650px;
@@ -54,14 +71,92 @@
 }
 
 
+#sword-screen{
+  display: flex;
+  flex-direction: column;
+  background-image: url("https://pbs.twimg.com/media/GdiklRpXUAAmAXv?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  font-size: 34px;
+  font-style: bold;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+
+  #sword{
+    width: 500px;
+    height: 500px;
+  }
 
 
 
-#sword{
-  width: 500px;
-  height: 250px;
+
+
 }
 
+
+#instructionsScreen{
+  display: flex;
+  flex-direction: row;
+  background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  font-size: 34px;
+  font-style: bold;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+  #instructions {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row; /* Alinea las secciones en fila (horizontalmente) */
+    gap: 20px; /* Espacio entre secciones */
+  }
+
+  /* Opcional: Estilo de las secciones */
+  #instructionsSection, #instructions section {
+    text-align: center; /* Centra texto e imágenes dentro de cada sección */
+    flex: 1; /* Hace que las secciones ocupen el mismo espacio */
+  }
+
+  /* Opcional: Imágenes */
+  #instructions img {
+    max-width: 400px; /* Ajusta el tamaño máximo de las imágenes */
+    height: auto;
+  }
+
+
+
+  #allSetSection{
+    display: flex;
+    flex-direction: column;
+    background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+    width: 1495px;
+    height: 808px;
+    font-family: 'Pink Fresh', sans-serif;
+    color: aliceblue;
+    font-size: 64px;
+    font-style: bold;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+#secciongrande{
+
+  background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+}
 
 #battlefield{
   width: 600px;

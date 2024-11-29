@@ -3,9 +3,11 @@ import { router, socket } from "../routes.js"; // Importamos el router y socket
 export default function renderScreen2() {
   const app = document.getElementById("app");
   app.innerHTML = `
+  <section id="sword-screen">
     <h1>Welcome Hero of Hyrule!</h1>
-    <img id='sword' src="https://pbs.twimg.com/media/GaINbJFXUAAchZU?format=jpg&name=large" alt="Master Sword" />
+    <img id='sword' src="https://pbs.twimg.com/media/GdijLk3XIAAfquO?format=png&name=small" alt="Master Sword" />
     <h2>Raise the Master Sword to Continue</h2>
+    </section>
   `;
 
   // Escuchar el evento de cambio de pantalla

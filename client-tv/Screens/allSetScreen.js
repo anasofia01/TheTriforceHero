@@ -3,8 +3,12 @@ import { router, socket } from '../routes.js';
 export default function renderScreen4() {
   const app = document.getElementById('app');
   app.innerHTML = `
+  <section id="Secciongrande">
+  <section id="allSetSection">
     <img src="https://pbs.twimg.com/media/GaIoKB1W0AATk9L?format=png&name=small" alt="All Set!" />
     <h1>All Set!</h1>
+  </section>
+  </section>
   `;
 
   // Navegar automáticamente después de 25 segundos
