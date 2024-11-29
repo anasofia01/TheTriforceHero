@@ -10,6 +10,6 @@ export default function renderScreen6() {
   `;
 
 	document.getElementById('btn-winner').addEventListener('click', () => {
-		router.navigateTo('registerScreen');
+		router.navigateTo('/registerScreen');
 	});
 }

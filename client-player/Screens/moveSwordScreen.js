@@ -18,11 +18,11 @@ export default function renderScreen3() {
   `;
 
 	socket.on('sendWinner', (data) => {
-		router.navigateTo('/registerScreen');
+		router.navigateTo('/winnerScreen');
 	});
 
 	socket.on('sendLoser', (data) => {
-		router.navigateTo('/registerScreen');
+		router.navigateTo('/loserScreen');
 	});
 
 	socket.on('winner', (data) => {
