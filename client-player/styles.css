@@ -181,3 +181,213 @@ button[type='submit']:hover {
 #fondogiro{
 	background-color: #d0f2f3;
 }
+
+
+
+@media (min-width: 500px) { /* Media Query para dispositivos con un ancho mínimo de 500px */
+	@media (min-width: 500px) {
+		#gifNotify {
+			width: 300px;
+			height: 300px;
+		}
+
+		#moveSword {
+			width: 400px;
+			height: 450px;
+			margin-top: 60px;
+		}
+
+		body {
+			background-size: cover;
+			background-position: center;
+			height: 100vh;
+		}
+
+		#app {
+			padding: 3rem;
+			max-width: 600px;
+			border-radius: 15px;
+		}
+
+		h1 {
+			font-size: 2.5rem;
+		}
+
+		h4 {
+			margin-bottom: 1rem;
+		}
+
+		p {
+			font-size: 1.2rem;
+			margin-bottom: 2rem;
+		}
+
+		input[type='text'],
+		input[type='email'],
+		input[type='number'] {
+			font-size: 1.2rem;
+			padding: 1rem;
+		}
+
+		button[type='submit'] {
+			padding: 1rem;
+			font-size: 1.2rem;
+		}
+
+		.giifff {
+			width: 600px;
+			height: 300px;
+		}
+
+		.gifi {
+			width: 300px;
+			height: 250px;
+		}
+
+		#seeAgain-btn,
+		#nextRupee-continue,
+		#letsPlay-btn,
+		#acceletometer-button {
+			padding: 15px 25px;
+			font-size: 1.2rem;
+		}
+
+		#letsPlay-btn {
+			font-size: 36px;
+			margin-top: 30px;
+		}
+
+		#acceletometer-button {
+			font-size: 20px;
+			margin-bottom: 40px;
+		}
+	}
+
+	/* Estilo base */
+	#gifNotify {
+		width: 200px;
+		height: 200px;
+	}
+
+	#moveSword {
+		width: 300px;
+		height: 350px;
+		margin-top: 50px;
+	}
+
+	body {
+		background-image: url('https://cdn1.epicgames.com/ue/product/Screenshot/21-1920x1080-fc4b0ed078d043e6cef99e324f0e0b23.png?resize=1&w=1920');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+		font-family: Arial, sans-serif;
+		color: #fff;
+	}
+
+	#app {
+		background-color: rgba(0, 0, 0, 0.8);
+		padding: 2rem;
+		border-radius: 10px;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+		text-align: center;
+		max-width: 400px;
+		width: 100%;
+	}
+
+	h1 {
+		font-size: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	h4 {
+		margin-top: 0;
+		margin-bottom: 0.5rem;
+	}
+
+	p {
+		font-size: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	input[type='text'],
+	input[type='email'],
+	input[type='number'] {
+		width: 100%;
+		padding: 0.75rem;
+		border: none;
+		border-radius: 5px;
+		background-color: rgba(255, 255, 255, 0.205);
+		color: #fff;
+		font-size: 1rem;
+	}
+
+	button[type='submit'] {
+		width: 100%;
+		padding: 0.75rem;
+		background-color: #ff6600;
+		color: #fff;
+		border: none;
+		border-radius: 5px;
+		font-size: 1rem;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	}
+
+	button[type='submit']:hover {
+		background-color: #e65c00;
+	}
+
+	.giifff {
+		width: 500px;
+		height: 250px;
+	}
+
+	.gifi {
+		width: 250px;
+		height: 200px;
+	}
+
+	#seeAgain-btn,
+	#nextRupee-continue,
+	#letsPlay-btn,
+	#acceletometer-button {
+		background-color: #4CAF50;
+		color: white;
+		border: none;
+		padding: 10px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background-color 0.3s;
+	}
+
+	#seeAgain-btn:hover,
+	#nextRupee-continue:hover,
+	#letsPlay-btn:hover,
+	#acceletometer-button:hover {
+		background-color: #4CAF50;
+	}
+
+	#letsPlay-btn {
+		margin-top: 20px;
+		font-size: 32px;
+	}
+
+	#acceletometer-button {
+		margin-top: 20px;
+		margin-bottom: 30px;
+		font-size: 18px;
+	}
+
+	#fondogiro {
+		background-color: #d0f2f3;
+	}
+}
