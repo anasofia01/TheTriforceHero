@@ -212,15 +212,251 @@
   height: 800px;
 }
 
+#fondoSword{
+  background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+#swordtry{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#swordtry1{
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  font-size: 32px;
+margin-top: 60px;
+margin-bottom: 50px
+}
+
+#titleswordtry{
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  font-size: 64px;
+}
+
+#swordtry2{
+display: flex;
+flex-direction: row;
+font-size: 50px;
+}
+
+
+#h2try{
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  margin-top: 60px;
+  margin-bottom: 50px
+}
+
+#cajita{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
 #linkControl{
-  width: 300px;
-  height: 500px;
+  width: 500px;
+  height: 400px;
+}
+
+
+#loading-screen{
+  background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+  display: flex;
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  font-size: 32px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#tutorial{
+  background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+  width: 1495px;
+  height: 800px;
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  font-size: 32px;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#tutorialh1{
+margin-bottom: 0;
+}
+
+
+#readySection{
+  background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+#readySection2{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#battleLinkPigR {
+  width: 700px;
+  height: 400px;
+}
+
+#readyh1{
+  font-size: 64px;
+  font-style: bold;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#readyp{
+  font-size: 28px;
+  font-style: regular;
+  font-weight: 400;
+  width: 550px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#trigiff{
+margin-bottom: 400px;
+}
+
+
+#counterSection{
+  background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 0;
+
+}
+
+#counterSection {
+  display: flex; /* Usamos Flexbox para centrar */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  margin: 0; /* Elimina márgenes por defecto */
+
+}
+
+#timer-display {
+  font-size: 200px; /* Tamaño grande del texto */
+  font-weight: bold; /* Negrita */
+  margin: 0; /* Elimina márgenes del párrafo */
+  text-align: center; /* Asegura que el texto esté centrado */
+}
+
+
+#beginSection{
+  background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  font-size: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+#congratsSection{
+  background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  font-size: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#congratsp{
+width: 800px;
+margin-top: 40px;
+font-size: 28px;
+}
+#ppp{
+  margin-bottom: 40px;
 }
 
 #game{
   width: 800px;
   height: 500px;
+}
+
+
+#finish{
+  background-color: #4CAF50; /* Verde */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Alineación en línea */
+  font-size: 16px; /* Tamaño de fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor en forma de mano */
+  transition: background-color 0.3s; /* Animación suave en hover */
+}
+
+/* Efecto hover */
+#finish:hover {
+  background-color: #45a049; /* Un verde más oscuro */
 }
 
 

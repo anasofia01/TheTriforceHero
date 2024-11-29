@@ -3,8 +3,10 @@ import { router, socket } from '../routes.js';
 export default function renderScreen10() {
 	const app = document.getElementById('app');
 	app.innerHTML = `
-    <h1>Timer</h1>
+
+	<section id='counterSection'>
     <p id="timer-display">10</p>
+	</section>
   `;
 
 	let timeLeft = 10; // Inicia con 10 segundos

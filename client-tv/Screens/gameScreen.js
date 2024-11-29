@@ -352,21 +352,34 @@ export default function renderScreen12() {
 	});
 
 
-	// Escena de Victoria
-	scene('youWin', async () => {
-		// Fondo verde
+// Escena de Victoria
+scene('youWin', () => {
+	// Fondo verde
+	add([sprite('Winner', { width: 1490, height: 805 }), pos(0, 0)]);
+	socket.emit('sendMailWinner', { winner: 'You Won!', score: 100 });
 
-		add([sprite('Winner', { width: 1490, height: 805 }), pos(0, 0)]);
-		socket.emit('sendMailWinner', { winner: 'You Won!', score: 100 });
-	});
+	// Temporizador para salir después de 4 segundos
+	setTimeout(() => {
+			socket.emit('winnnnner');
+			router.navigateTo('/congratsScreen');
+	}, 4000); // 4 segundos
+});
 
-	// Escena de Game Over
-	scene('gameOver', () => {
-		// Fondo negro
+// Escena de Game Over
+scene('gameOver', () => {
+	// Fondo negro
+	add([sprite('Loser', { width: 1490, height: 805 }), pos(0, 0)]);
+	socket.emit('sendMailLoser', { winner: 'You Lost!', score: 0 });
 
-		add([sprite('Loser', { width: 1490, height: 805 }), pos(0, 0)]);
-		socket.emit('sendMailLoser', { winner: 'You Lost!', score: 0 });
-	});
+	// Temporizador para salir después de 4 segundos
+	setTimeout(() => {
+			socket.emit('finish');
+			socket.emit('loseeeer');
+			router.navigateTo('/congratsScreen');
+
+	}, 4000); // 4 segundos
+});
+
 
 	// Iniciar escena
 	go('juego');

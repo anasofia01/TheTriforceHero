@@ -5,7 +5,7 @@ export default function renderScreen1() {
 	app.innerHTML = `
     <h1>The Legend of Zelda</h1>
     <p>Awesome! You're now connected to the game! Keep an eye on the screen and tap to continue.</p>
-    <img id="btn-next" src="https://media.tenor.com/QHr0ZUXVarMAAAAi/zelda-sword.gif" alt="Master Sword" />
+    <img class='giifff' id="btn-next" src="https://media.tenor.com/QHr0ZUXVarMAAAAi/zelda-sword.gif" alt="Master Sword" />
     <p>Tap to continue!</p>
   `;
 

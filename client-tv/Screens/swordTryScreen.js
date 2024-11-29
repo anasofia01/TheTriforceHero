@@ -3,19 +3,33 @@ import { router, socket } from '../routes.js';
 export default function renderScreen6() {
 	const app = document.getElementById('app');
 	app.innerHTML = `
-    <h1>Controls!</h1>
-    <p>You wil have to move your the sword in the correct direction to defeat the enemies!</p>
+  <section id='fondoSword'>
 
-    <ul>
-      <img id='linkControl' src='https://pbs.twimg.com/media/GaIxYJrWEAAblEh?format=jpg&name=4096x4096'/>
-      <li>Left</li>
+  <section id='swordtry'>
+    <section id='swordtry1'>
+      <h1 id ='titleswordtry'>Controls!</h1>
+      <p>You wil have to move your the sword in the correct direction to defeat the enemies!</p>
+    </section>
 
-      <img id='linkControl' src='https://pbs.twimg.com/media/GaIzq2dXIAAXuxr?format=jpg&name=large'/>
-      <li>Forward</li>
+    <section id='swordtry2'>
+      <div id='cajita'>
+      <img id='linkControl' src='https://pbs.twimg.com/media/GdjCGFWXAAAKwTQ?format=png&name=small'/>
+      <h2 id='h2try'>Left</h2>
+      </div>
 
-      <img id='linkControl' src='https://pbs.twimg.com/media/GaI0Mx-WQAEU3AL?format=jpg&name=4096x4096'/>
-      <li>Right</li>
-    </ul>
+      <div id='cajita'>
+      <img id='linkControl' src='https://pbs.twimg.com/media/GdjCEIJWwAASUDR?format=png&name=small'/>
+      <h2 id='h2try'>Forward</h2>
+      </div>
+
+      <div id='cajita'>
+      <img id='linkControl' src='https://pbs.twimg.com/media/GdjCByNWcAAPPat?format=png&name=small'/>
+      <h2 id='h2try'>Right</h2>
+      </div>
+    </section>
+  </section>
+
+  </section>
 
   `;
   socket.on('thirdRupeeScreenChanged', (data) => {

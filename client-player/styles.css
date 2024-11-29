@@ -5,7 +5,8 @@
 
 #moveSword {
 	width: 300px;
-	height: 500px;
+	height: 350px;
+	margin-top: 50px;
 }
 
 body {
@@ -83,4 +84,100 @@ button[type='submit'] {
 
 button[type='submit']:hover {
 	background-color: #e65c00;
+}
+
+.giifff{
+	width: 500px;
+	height: 250px;
+}
+
+
+.gifi{
+	width: 250px;
+	height: 200px;
+}
+
+#seeAgain-btn{
+  background-color:
+	#3285ca; /* Verde */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Alineación en línea */
+  font-size: 16px; /* Tamaño de fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor en forma de mano */
+  transition: background-color 0.3s; /* Animación suave en hover */
+}
+
+/* Efecto hover */
+#seeAgain-btn:hover {
+  background-color: #3285ca; /* Un verde más oscuro */
+}
+
+
+#nextRupee-continue{
+  background-color: #4CAF50; /* Verde */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Alineación en línea */
+  font-size: 16px; /* Tamaño de fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor en forma de mano */
+  transition: background-color 0.3s; /* Animación suave en hover */
+}
+
+/* Efecto hover */
+#nextRupee-continue:hover {
+  background-color: #4CAF50; /* Un verde más oscuro */
+}
+
+#letsPlay-btn{
+  background-color: #5ac60e; /* Verde */
+	margin-top: 20px;
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Alineación en línea */
+  font-size: 32px; /* Tamaño de fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor en forma de mano */
+  transition: background-color 0.3s; /* Animación suave en hover */
+}
+
+/* Efecto hover */
+#letsPlay-btn:hover {
+  background-color: #4CAF50; /* Un verde más oscuro */
+}
+
+#acceletometer-button{
+  background-color: #5ac60e; /* Verde */
+	margin-top: 20px;
+	margin-bottom: 30px;
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Alineación en línea */
+  font-size: 18px; /* Tamaño de fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor en forma de mano */
+  transition: background-color 0.3s; /* Animación suave en hover */
+}
+
+/* Efecto hover */
+#accelerometer-button:hover {
+  background-color: #4CAF50; /* Un verde más oscuro */
+}
+
+#fondogiro{
+	background-color: #d0f2f3;
 }

@@ -5,13 +5,14 @@ export default function renderScreen3() {
 	app.innerHTML = `
     <h1>The Legend of Zelda</h1>
     <p>Move your sword from side to side to defeat the enemies.</p>
-		<img id='moveSword' src="https://pbs.twimg.com/media/GaJSC7PWYAAMAiU?format=jpg&name=4096x4096" alt="Master Sword" />
-    <p>Look at the TV screen!</p>
+		<img id='moveSword' src="https://pbs.twimg.com/media/GdjRkkEWgAArkgZ?format=png&name=small" alt="Master Sword" />
+    <h4>Look at the TV screen!</h4>
 
-		<h1>Phone sensors</h1>
-    <button id="location-button">Activate location</button>
+
     <button id="acceletometer-button">Activate Accelerometer</button>
+		<section id='fondogiro'>
     <canvas id="motionCanvas" width="400" height="400"></canvas>
+		</section>
     <div id="data"></div>
 
   `;
