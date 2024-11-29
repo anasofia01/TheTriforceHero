@@ -3,19 +3,22 @@ import { router, socket } from '../routes.js';
 export default function renderScreen1() {
 	const app = document.getElementById('app');
 	app.innerHTML = `
-
-	<img id='nintendoLogo' src="https://logos-world.net/wp-content/uploads/2020/11/Nintendo-Logo-2006-2016.png"/>
-	<section id='qrCodeSection'>
-	<section>
-    <h1>The Triforce Hero</h1>
-		<img id='battleLinkPig' src='https://pbs.twimg.com/media/GaH35BiWgAAMhNi?format=jpg&name=4096x4096'/>
+<section id='qrCodeSection'>
+	<section id=Nintendo>
+		<img id='nintendoLogo' src="https://pbs.twimg.com/media/GdiLjR7XAAEJigp?format=png&name=240x240"/>
 	</section>
-	<section >
-    <h4>Hey Listen!</h4>
-		<img id='qrCode' src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"/>
-    <h4>Scan Me</h4>
+	<section id='qrCodeSection2'>
+			<section id='qrCodeSection3'>
+    		<img id='gameTitle' src='https://pbs.twimg.com/media/GdiHDJ5WwAAqyr2?format=png&name=small'/>
+				<img id='battleLinkPig' src='https://pbs.twimg.com/media/GdiEbTEWsAAQjE2?format=png&name=900x900'/>
+			</section>
+			<section id='qrCodeSection4' >
+    		<h4>HEY LISTEN!</h4>
+				<img id='qrCode' src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"/>
+    		<h4>SCAN ME</h4>
+			</section>
 	</section>
-	</section>
+</section>
   `;
 
 	socket.on('connectScreenChanged', (data) => {

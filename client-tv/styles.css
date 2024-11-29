@@ -1,12 +1,61 @@
-#nintendoLogo {
-  width: 100px;
-  height: 50px;
+@import url('https://fonts.cdnfonts.com/css/stars-dream');
+/*QRCODE*/
+
+*{  box-sizing: border-box;
+  margin: 0;
+  border: 0;
+  padding: 0;}
+
+#qrCodeSection{
+  display: flex;
+  flex-direction: column;
+  background-image: url("https://pbs.twimg.com/media/GdiWBzqXQAIBeYa?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+
+
+  #nintendoLogo {
+    margin-left: 80px;
+    margin-top: 20px;
+    width: 205px;
+    height: 70px;
+  }
+
+  #qrCodeSection2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  #qrCodeSection3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #gameTitle{
+    width: 400px;
+    height: 200px;
+
+  }
+
+  #qrCodeSection4{
+    color: aliceblue;
+    font-size: 64px;
+    font-style: light;
+    font-weight: normal;
+  }
+  #battleLinkPig {
+    width: 650px;
+    height: 350px;
+  }
 }
 
-#battleLinkPig {
-  width: 500px;
-  height: 250px;
-}
+
+
+
 
 #sword{
   width: 500px;
@@ -30,10 +79,6 @@
   height: 500px;
 }
 
-#qrCodeSection{
-  display: flex;
-  flex-direction: row;
-}
 
 #howToSection{
   display: flex;
