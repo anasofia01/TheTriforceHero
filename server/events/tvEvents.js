@@ -18,6 +18,10 @@ const tvEvents = (socket, io) => {
 	socket.on('nextRupeeChangeScreen', nextRupeeChangeScreen(socket, io));
 	socket.on('seeAgain', seeAgain(socket, io));
 	socket.on('letsPlay', letsPlay(socket, io));
+	socket.on('sendMailWinner', (data) => {
+		socket.emit('sendWinner', data);
+		console.log('se envía');
+	});
 };
 
 module.exports = { tvEvents };

@@ -52,6 +52,30 @@ export default function renderScreen4() {
 			console.error(error);
 		}
 
+		const dataEmail = {
+			email: document.getElementById('email').value,
+		};
+
+		try {
+			const response = await fetch('http://localhost:5050/send-email/template', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(dataEmail),
+			});
+
+			if (response.ok) {
+				const result = await response.json();
+				console.log('Email enviado con éxito:', result);
+			} else {
+				const error = await response.json();
+				console.error('Error al enviar el email:', error);
+			}
+		} catch (error) {
+			console.error('Error en la solicitud fetch:', error);
+		}
+
 		// Navegar a la pantalla de agradecimiento
 		router.navigateTo('/thanksScreen');
 	});

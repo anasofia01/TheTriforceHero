@@ -3,11 +3,12 @@ import { router, socket } from '../routes.js';
 export default function renderScreen12() {
 	const app = document.getElementById('app');
 
+	socket.emit('sendMailWinner', 'prueba');
+
 	// Escena principal
 	scene('juego', () => {
 		// Fondo inicial
 		add([sprite('fondo', { width: 1490, height: 805 }), pos(0, 0)]);
-
 
 		const trifuerza = add([
 			sprite('Trifuerza'),
@@ -18,7 +19,6 @@ export default function renderScreen12() {
 				cambiarSprite: false,
 			},
 		]);
-
 
 		loop(0.5, () => {
 			if (trifuerza.exists()) {
@@ -118,32 +118,29 @@ export default function renderScreen12() {
 			LinkStay.use(sprite(spriteLink));
 		}
 
-// Conectar con el servidor (suponiendo que tienes un servidor socket.io corriendo)
-const socket = io();
+		// Conectar con el servidor (suponiendo que tienes un servidor socket.io corriendo)
+		//const socket = io();
 
-// Escuchar los eventos emitidos por el servidor y mover a Link
-socket.on('MoveSwordLeft', () => {
-    atacar('LinkIzquierda', -60, -30, 'EspadaIzquierda');
-});
+		// Escuchar los eventos emitidos por el servidor y mover a Link
+		socket.on('MoveSwordLeft', (data) => {
+			console.log('se recibe movimiento izquierda');
+			atacar('LinkIzquierda', -60, -30, 'EspadaIzquierda');
+		});
 
-socket.on('MoveSwordRight', () => {
-    atacar('LinkDerecha', 85, -30, 'EspadaDerecha');
-});
+		socket.on('MoveSwordRight', (data) => {
+			console.log('se recibe movimiento derecha');
+			atacar('LinkDerecha', 85, -30, 'EspadaDerecha');
+		});
 
-socket.on('MoveSwordFront', () => {
-    atacar('LinkFrente', -40, -65, 'EspadaFrente');
-});
-
+		socket.on('MoveSwordFront', (data) => {
+			console.log('se recibe movimiento frente');
+			atacar('LinkFrente', -40, -65, 'EspadaFrente');
+		});
 
 		// Generar fantasmas periódicamente
 		loop(1.5, () => {
 			generarFantasma();
 		});
-
-
-
-
-
 
 		// Función para generar un fantasma
 		function generarFantasma() {
@@ -210,81 +207,67 @@ socket.on('MoveSwordFront', () => {
 			});
 		}
 
+		// Generar enemigos desde arriba cuando el temporizador llegue a 40 segundos
+		loop(4, () => {
+			if (tiempoRestante <= 40) {
+				// Generar enemigo cada 4 segundos desde los 40 segundos restantes
+				loop(10, () => generarEnemigo());
+			}
+		});
 
+		// Función para generar un enemigo desde arriba
+		function generarEnemigo() {
+			const spawnPos = vec2(705, 0); // Siempre desde arriba, alineado con Link
+			const velocidad = vec2(0, 100); // Movimiento vertical hacia abajo
 
-
-
-
-// Generar enemigos desde arriba cuando el temporizador llegue a 40 segundos
-loop(4, () => {
-	if (tiempoRestante <= 40) {
-			// Generar enemigo cada 4 segundos desde los 40 segundos restantes
-			loop(10, () => generarEnemigo());
-	}
-});
-
-
-
-// Función para generar un enemigo desde arriba
-function generarEnemigo() {
-	const spawnPos = vec2(705, 0); // Siempre desde arriba, alineado con Link
-	const velocidad = vec2(0, 100); // Movimiento vertical hacia abajo
-
-	const enemigo = add([
-			sprite('EnemigoIz1'), // Sprite inicial
-			pos(spawnPos),
-			area(),
-			'enemigo',
-			{
+			const enemigo = add([
+				sprite('EnemigoIz1'), // Sprite inicial
+				pos(spawnPos),
+				area(),
+				'enemigo',
+				{
 					cambiarSprite: 0, // Contador para alternar entre sprites
 					estaMuriendo: false, // Controla la animación de muerte
 					yaInfligioDanio: false, // Evita daño múltiple
-			},
-	]);
+				},
+			]);
 
-	// Alternar sprites para animación de movimiento
-	loop(0.3, () => {
-			if (enemigo.exists() && !enemigo.estaMuriendo) {
+			// Alternar sprites para animación de movimiento
+			loop(0.3, () => {
+				if (enemigo.exists() && !enemigo.estaMuriendo) {
 					enemigo.cambiarSprite = (enemigo.cambiarSprite + 1) % 3;
 					const spriteActual = `EnemigoIz${enemigo.cambiarSprite + 1}`;
 					enemigo.use(sprite(spriteActual));
-			}
-	});
+				}
+			});
 
-	// Movimiento hacia Link
-	enemigo.onUpdate(() => {
-			if (!enemigo.estaMuriendo) {
+			// Movimiento hacia Link
+			enemigo.onUpdate(() => {
+				if (!enemigo.estaMuriendo) {
 					enemigo.move(velocidad); // Movimiento fijo hacia abajo
-			}
-	});
+				}
+			});
 
-	// Colisión con la espada
-	enemigo.onCollide('espada', () => {
-			if (!enemigo.estaMuriendo) {
+			// Colisión con la espada
+			enemigo.onCollide('espada', () => {
+				if (!enemigo.estaMuriendo) {
 					enemigo.estaMuriendo = true;
 					enemigo.use(sprite('FantasmaPolvo')); // Sprite de animación de muerte
 					wait(0.2, () => destroy(enemigo)); // Eliminar tras animación
-			}
-	});
+				}
+			});
 
-	// Colisión con Link
-	enemigo.onCollide('link', () => {
-			if (!enemigo.yaInfligioDanio) {
+			// Colisión con Link
+			enemigo.onCollide('link', () => {
+				if (!enemigo.yaInfligioDanio) {
 					enemigo.yaInfligioDanio = true;
 					recibirDaño();
 					cambiarSprite('LinkDaño'); // Cambiar sprite de Link al de daño
 					destroy(enemigo); // Destruir enemigo tras colisión
 					wait(0.4, () => cambiarSprite('LinkStay')); // Regresar sprite de Link
-			}
-	});
-}
-
-
-
-
-
-
-
+				}
+			});
+		}
 
 		// Temporizador de 1 minuto
 		let tiempoRestante = 60; // 1 minuto
@@ -310,19 +293,18 @@ function generarEnemigo() {
 	});
 
 	// Escena de Victoria
-	scene('youWin', () => {
+	scene('youWin', async () => {
 		// Fondo verde
 
 		add([sprite('Winner', { width: 1490, height: 805 }), pos(0, 0)]);
 
-	});
+});
 
 	// Escena de Game Over
 	scene('gameOver', () => {
 		// Fondo negro
 
 		add([sprite('Loser', { width: 1490, height: 805 }), pos(0, 0)]);
-
 	});
 
 	// Iniciar escena
