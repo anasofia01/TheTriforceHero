@@ -16,6 +16,14 @@ export default function renderScreen3() {
 
   `;
 
+	console.log('prueba');
+
+	socket.on('sendWinner', (data) => {
+		alert('llega');
+		console.log('llega2');
+		router.navigateTo('/registerScreen');
+	});
+
 	socket.on('winner', (data) => {
 		if (data.screen === 'winnerScreen') {
 			router.navigateTo('/winnerScreen');
@@ -146,11 +154,6 @@ export default function renderScreen3() {
 			console.log('DeviceMotionEvent is not supported by this browser.');
 		}
 	}
-
-	socket.on('sendWinner', (data) => {
-		console.log('llega');
-		router.navigateTo('/registerScreen');
-	});
 
 	drawAxes();
 }
