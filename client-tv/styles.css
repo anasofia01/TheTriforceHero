@@ -11,13 +11,7 @@
   border: 0;
   padding: 0;}
 
-  .audio-only {
-    position: absolute;
-    width: 100px; /* Tamaño mínimo para ocultar */
-    height: 100px;
-    top: -9999px;
-    left: -9999px;
-}
+
 
 #qrCodeSection{
   display: flex;
@@ -158,9 +152,64 @@
   height: 808px;
 }
 
+
+#howToSection{
+  display: flex;
+  flex-direction: row;
+  background-image: url("https://pbs.twimg.com/media/Gdil583XQAAQXVQ?format=jpg&name=large");
+  width: 1495px;
+  height: 808px;
+  font-family: 'Pink Fresh', sans-serif;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+#howToSection1{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 400px;
+  font-family: 'Pink Fresh', sans-serif;
+  color: aliceblue;
+  font-size: 34px;
+  font-style: bold;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: 50px;
+}
+
+#howtoplayh1{
+  font-size: 64px;
+  font-style: bold;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#howtoplayp{
+  font-size: 30px;
+  font-style: regular;
+  font-weight: 400;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#battleLinkPigHOW {
+  width: 550px;
+  height: 550px;
+}
+
 #battlefield{
-  width: 600px;
-  height: 600px;
+  width: 700px;
+  height: 800px;
 }
 
 
