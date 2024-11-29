@@ -289,9 +289,10 @@ function generarEnemigo() {
 		// Temporizador de 1 minuto
 		let tiempoRestante = 60; // 1 minuto
 		const temporizadorTexto = add([
-			text(tiempoRestante.toString(), { size: 32 }), // Texto del temporizador
-			pos(width() - 120, 20), // Posición en la esquina superior derecha
+			text(tiempoRestante.toString(), { size: 64 }), // Texto del temporizador
+			pos(width() - 120, 17), // Posición en la esquina superior derecha
 			color(255, 255, 255), // Color blanco
+
 		]);
 
 		// Actualizar el temporizador cada segundo
@@ -313,23 +314,6 @@ function generarEnemigo() {
 		// Fondo verde
 
 		add([sprite('Winner', { width: 1490, height: 805 }), pos(0, 0)]);
-
-// Escuchar los movimientos de la espada y generar confeti
-socket.on('MoveSwordLeft', () => {
-	// Generar confeti en la dirección izquierda
-	addConfetti({ pos: vec2(200, height() / 2), heading: -90 }); // Hacia la izquierda
-});
-
-socket.on('MoveSwordRight', () => {
-	// Generar confeti en la dirección derecha
-	addConfetti({ pos: vec2(width() - 200, height() / 2), heading: 90 }); // Hacia la derecha
-});
-
-socket.on('MoveSwordFront', () => {
-	// Generar confeti en la dirección de frente
-	addConfetti({ pos: vec2(width() / 2, height() / 2), heading: 0 }); // Hacia el frente
-});
-
 
 	});
 
