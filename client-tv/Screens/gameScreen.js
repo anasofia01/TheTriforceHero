@@ -3,6 +3,51 @@ import { router, socket } from '../routes.js';
 export default function renderScreen12() {
 	const app = document.getElementById('app');
 
+	kaboom({
+		width: 1490,
+		height: 805,
+		background: [0, 0, 0],
+		root: document.getElementById('app'),
+	});
+	// Cargar sprites
+	loadSprite('fondo', './sprites/fondo.png');
+	loadSprite('LinkStay', './sprites/LinkStay.png');
+	loadSprite('LinkDerecha', './sprites/LinkDerecha.png');
+	loadSprite('LinkIzquierda', './sprites/LinkIzquierda.png');
+	loadSprite('LinkFrente', './sprites/LinkFrente.png');
+	loadSprite('EspadaDerecha', './sprites/EspadaDerecha.png');
+	loadSprite('EspadaIzquierda', './sprites/EspadaIzquierda.png');
+	loadSprite('EspadaFrente', './sprites/EspadaFrente.png');
+	loadSprite('LinkDaño', './sprites/LinkDaño.png');
+	loadSprite('Fantasma', './sprites/Fantasma.png');
+	loadSprite('FantasmaDos', './sprites/FantasmaDos.png');
+	loadSprite('FantasmaDaño', './sprites/FantasmaDaño.png');
+	loadSprite('FantasmaPolvo', './sprites/FantasmaPolvo.png');
+	loadSprite('Corazon1', './sprites/Corazon1.png');
+	loadSprite('CorazonMedio1', './sprites/CorazonMedio1.png');
+	loadSprite('Corazon2', './sprites/Corazon2.png');
+	loadSprite('CorazonMedio2', './sprites/CorazonMedio2.png');
+	loadSprite('Corazon3', './sprites/Corazon3.png');
+	loadSprite('CorazonMedio3', './sprites/CorazonMedio3.png');
+	loadSprite('Corazon4', './sprites/Corazon4.png');
+	loadSprite('CorazonMedio4', './sprites/CorazonMedio4.png');
+	loadSprite('Corazon5', './sprites/Corazon5.png');
+	loadSprite('CorazonMedio5', './sprites/CorazonMedio5.png');
+	loadSprite('EnemigoIz1', './sprites/EnemigoIz1.png');
+	loadSprite('EnemigoIz2', './sprites/EnemigoIz2.png');
+	loadSprite('EnemigoIz3', './sprites/EnemigoIz3.png');
+	loadSprite('EnemigoDe1', './sprites/EnemigoDe1.png');
+	loadSprite('EnemigoDe2', './sprites/EnemigoDe2.png');
+	loadSprite('EnemigoDe3', './sprites/EnemigoDe3.png');
+	loadSprite('EnemigoFe1', './sprites/EnemigoFe1.png');
+	loadSprite('EnemigoFe2', './sprites/EnemigoFe2.png');
+	loadSprite('EnemigoFe3', './sprites/EnemigoFe3.png');
+	loadSprite('Trifuerza', './sprites/Trifuerza.png');
+	loadSprite('Trifuerza1', './sprites/Trifuerza1.png');
+	loadSprite('Winner', './sprites/Winner.png');
+	loadSprite('Loser', './sprites/Loser.png');
+
+
 	// Escena principal
 	scene('juego', () => {
 		// Fondo inicial
@@ -295,6 +340,11 @@ export default function renderScreen12() {
 
 		add([sprite('Winner', { width: 1490, height: 805 }), pos(0, 0)]);
 		socket.emit('sendMailWinner', { winner: 'You Won!', score: 100 });
+
+		setTimeout(() => {
+			socket.emit('winnnnner');
+			router.navigateTo('/congratsScreen');
+		}, 4000); // 4 segundos
 	});
 
 	// Escena de Game Over
@@ -303,6 +353,12 @@ export default function renderScreen12() {
 
 		add([sprite('Loser', { width: 1490, height: 805 }), pos(0, 0)]);
 		socket.emit('sendMailLoser', { winner: 'You Lost!', score: 0 });
+		setTimeout(() => {
+			socket.emit('finish');
+			socket.emit('loseeeer');
+			router.navigateTo('/congratsScreen');
+		}, 4000); // 4 segundos
+	
 	});
 
 	// Iniciar escena

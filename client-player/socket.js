@@ -1,4 +1,4 @@
-const socket = io('https://920a-186-112-65-19.ngrok-free.app', { path: '/real-time' }); // Update this to your server URL
+const socket = io('4deb-186-112-65-19.ngrok-free.app', { path: '/real-time' }); // Update this to your server URL
 
 socket.on('connect', () => {
 	console.log('Connected to Socket.IO server');
