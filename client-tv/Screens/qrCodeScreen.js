@@ -14,13 +14,14 @@ export default function renderScreen1() {
 			</section>
 			<section id='qrCodeSection4' >
     		<h4>HEY LISTEN!</h4>
-				<img id='qrCode' src="https://pbs.twimg.com/media/GdkVTL-WUAA2Q_H?format=png&name=4096x4096"/>
+				<img id='qrCode' src="https://pbs.twimg.com/media/Gdk1e5JWoAA1ubc?format=png&name=4096x4096"/>
     		<h4>SCAN ME</h4>
 			</section>
 	</section>
 
 
-</section>
+
+	</section>
   `;
 
 	socket.on('connectScreenChanged', (data) => {

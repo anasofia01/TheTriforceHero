@@ -38,7 +38,7 @@ export default function renderScreen4() {
 		};
 
 		try {
-			const response = await fetch('https://0857-200-3-193-225.ngrok-free.app/users', {
+			const response = await fetch('https://7adb-186-112-65-19.ngrok-free.app/users', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export default function renderScreen4() {
 		};
 
 		try {
-			const response = await fetch('https://0857-200-3-193-225.ngrok-free.app/send-email/template', {
+			const response = await fetch('https://7adb-186-112-65-19.ngrok-free.app/send-email/template', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
