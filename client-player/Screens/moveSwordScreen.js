@@ -6,7 +6,7 @@ export default function renderScreen3() {
     <h1>The Legend of Zelda</h1>
     <p>Move your sword from side to side to defeat the enemies.</p>
 		<img id='moveSword' src="https://pbs.twimg.com/media/GdjRkkEWgAArkgZ?format=png&name=small" alt="Master Sword" />
-    <h4>Look at the TV screen!</h4>
+    <h4>Click the button below and move the sword!</h4>
 
 
     <button id="acceletometer-button">Activate Accelerometer</button>
