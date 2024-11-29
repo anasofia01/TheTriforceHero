@@ -3,8 +3,6 @@ import { router, socket } from '../routes.js';
 export default function renderScreen12() {
 	const app = document.getElementById('app');
 
-	socket.emit('sendMailWinner', 'prueba');
-
 	// Escena principal
 	scene('juego', () => {
 		// Fondo inicial
@@ -275,7 +273,6 @@ export default function renderScreen12() {
 			text(tiempoRestante.toString(), { size: 64 }), // Texto del temporizador
 			pos(width() - 120, 17), // Posición en la esquina superior derecha
 			color(255, 255, 255), // Color blanco
-
 		]);
 
 		// Actualizar el temporizador cada segundo
@@ -297,8 +294,8 @@ export default function renderScreen12() {
 		// Fondo verde
 
 		add([sprite('Winner', { width: 1490, height: 805 }), pos(0, 0)]);
-
-});
+		socket.emit('sendMailWinner', { winner: 'You Won!', score: 100 });
+	});
 
 	// Escena de Game Over
 	scene('gameOver', () => {

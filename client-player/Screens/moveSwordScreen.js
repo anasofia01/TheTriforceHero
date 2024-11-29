@@ -16,11 +16,7 @@ export default function renderScreen3() {
 
   `;
 
-	console.log('prueba');
-
 	socket.on('sendWinner', (data) => {
-		alert('llega');
-		console.log('llega2');
 		router.navigateTo('/registerScreen');
 	});
 

@@ -38,10 +38,6 @@ const playersEvents = (socket, io) => {
 		console.log('movimienti frente');
 		// Lógica para el movimiento al frente
 	});
-
-	socket.on('prueba', (data) => {
-		console.log('se emite desde game screen');
-	});
 };
 
 module.exports = { playersEvents };

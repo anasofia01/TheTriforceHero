@@ -34,6 +34,7 @@ const sendEmail = async (email, name, coupon) => {
 
 const sendEmailWithTemplate = async (email, name, coupon) => {
 	sendSmtpEmail.templateId = 1;
+	sendSmtpEmail.subject = 'YOU WON A PRIZE!!!!';
 	sendSmtpEmail.sender = {
 		name: 'Ana Sofia Pacheco',
 		email: 'pacheco.anasof@gmail.com',
@@ -43,7 +44,10 @@ const sendEmailWithTemplate = async (email, name, coupon) => {
 		email: 'pacheco.anasof@gmail.com',
 		name: 'Support',
 	};
-	sendSmtpEmail.params = { parameter: coupon };
+	sendSmtpEmail.params = {
+		'f-name': name,
+		'coupon-code': coupon,
+	};
 
 	try {
 		return await apiInstance.sendTransacEmail(sendSmtpEmail);
