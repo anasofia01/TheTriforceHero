@@ -142,6 +142,7 @@ router.add('/beginScreen', async () => {
 router.add('/gameScreen', async () => {
 	clearScripts();
 	renderScreen12();
+
 });
 
 router.add('/congratsScreen', async () => {

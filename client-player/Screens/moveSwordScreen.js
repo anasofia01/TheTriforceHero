@@ -8,16 +8,13 @@ export default function renderScreen3() {
 		<img id='moveSword' src="https://pbs.twimg.com/media/GaJSC7PWYAAMAiU?format=jpg&name=4096x4096" alt="Master Sword" />
     <p>Look at the TV screen!</p>
 
-		  <h1>Phone sensors</h1>
+		<h1>Phone sensors</h1>
     <button id="location-button">Activate location</button>
     <button id="acceletometer-button">Activate Accelerometer</button>
     <canvas id="motionCanvas" width="400" height="400"></canvas>
     <div id="data"></div>
 
   `;
-
-
-
 
 	socket.on('winner', (data) => {
 		if (data.screen === 'winnerScreen') {
@@ -30,7 +27,7 @@ export default function renderScreen3() {
 			router.navigateTo('/LoserScreen');
 		}
 	});
-	
+
 	// let socket = io("http://172.20.10.2:5050", { path: "/real-time" });
 
 	const canvas = document.getElementById('motionCanvas');
@@ -70,25 +67,55 @@ export default function renderScreen3() {
 
 	function handleMotionEvent(event) {
 		const acceleration = event.accelerationIncludingGravity;
-		const rotationRate = event.rotationRate;
-		console.log('ACCELERATION: ', acceleration);
-		console.log('ROTATION: ', rotationRate);
-		// EMIT EVENT TO SERVER WITH VALUES
-		//Emitir estas 3 vainas amarillas de abajo al lservidor y luego a la pantalla del tv y renderizar en el tv
 
+		// Umbrales ajustados
+		const LEFT_THRESHOLD = 3.0; // Izquierda: X positivo
+		const RIGHT_THRESHOLD = -3.0; // Derecha: X negativo
+		const FRONT_Z_THRESHOLD = 7.0; // Frente: Z mayor a 7
+
+		// Dibujar ejes y datos en el canvas
 		drawAxes();
 		drawAcceleration(acceleration);
-		drawRotationRate(rotationRate);
 
+		// Actualización del elemento dataDiv
 		const dataDiv = document.getElementById('data');
 		dataDiv.innerHTML = `
-      <p>Acceleration (including gravity):</p>
-      <p>X: ${acceleration.x?.toFixed(2)}, Y: ${acceleration.y?.toFixed(2)}, Z: ${acceleration.z?.toFixed(2)}</p>
-      <p>Rotation Rate:</p>
-      <p>Alpha: ${rotationRate.alpha?.toFixed(2)}, Beta: ${rotationRate.beta?.toFixed(
-			2
-		)}, Gamma: ${rotationRate.gamma?.toFixed(2)}</p>
-    `;
+				<p><strong>Datos del acelerómetro:</strong></p>
+				<p>X: ${acceleration.x?.toFixed(2)}</p>
+				<p>Y: ${acceleration.y?.toFixed(2)}</p>
+				<p>Z: ${acceleration.z?.toFixed(2)}</p>
+			`;
+
+		// Detectar movimientos individuales y emitir eventos específicos
+		if (acceleration.x >= LEFT_THRESHOLD) {
+			socket.emit('moveSwordLeft', { move: 'left' });
+			dataDiv.innerHTML += `
+				<p style="color: green;">Movimiento detectado: Izquierda</p>`;
+			console.log('Movimiento detectado: izquierda');
+		} else if (acceleration.x <= RIGHT_THRESHOLD) {
+			socket.emit('moveSwordRight', { move: 'right' });
+			dataDiv.innerHTML += `
+				<p style="color: blue;">Movimiento detectado: Derecha</p>`;
+			console.log('Movimiento detectado: derecha');
+		} else if (acceleration.z >= FRONT_Z_THRESHOLD) {
+			socket.emit('moveSwordFront', { move: 'front' });
+			dataDiv.innerHTML += `
+				<p style="color: orange;">Movimiento detectado: Frente</p>`;
+			console.log('Movimiento detectado: frente');
+		} else {
+			dataDiv.innerHTML += `
+				<p style="color: red;">No se detectó un movimiento válido.</p>`;
+			console.log('No se detectó un movimiento válido.');
+		}
+
+		// Información adicional
+		dataDiv.innerHTML += `
+			<p><strong>Información adicional:</strong></p>
+			<p>Movimiento detectado solo si supera los umbrales establecidos.</p>
+			<p>Umbral izquierda: X >= ${LEFT_THRESHOLD}</p>
+			<p>Umbral derecha: X <= ${RIGHT_THRESHOLD}</p>
+			<p>Umbral frente: Z >= ${FRONT_Z_THRESHOLD}</p>
+		`;
 	}
 
 	drawAxes(); // Initial draw
@@ -119,6 +146,11 @@ export default function renderScreen3() {
 			console.log('DeviceMotionEvent is not supported by this browser.');
 		}
 	}
+
+	socket.on('sendWinner', (data) => {
+		console.log('llega');
+		router.navigateTo('/registerScreen');
+	});
 
 	drawAxes();
 }
