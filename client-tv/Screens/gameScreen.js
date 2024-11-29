@@ -3,6 +3,8 @@ import { router, socket } from '../routes.js';
 export default function renderScreen12() {
 	const app = document.getElementById('app');
 
+	socket.emit('sendMailWinner', 'prueba');
+
 	// Escena principal
 	scene('juego', () => {
 		// Fondo inicial
